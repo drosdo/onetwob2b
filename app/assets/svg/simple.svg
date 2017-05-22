@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Page 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 64 64 64 64 0 0 0"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="b2b_landing_com" transform="translate(-608.000000, -1584.000000)">
+            <g id="Group-22" transform="translate(501.000000, 1584.000000)">
+                <g id="Page-1" transform="translate(107.000000, 0.000000)">
+                    <path d="M40,20 C40,31.046 31.046,40 20,40 C8.954,40 0,31.046 0,20 C0,8.949 8.954,0 20,0 C31.046,0 40,8.949 40,20 L40,20 Z" id="Fill-1" fill="#B0DAF1"></path>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-4"></g>
+                    <polygon id="Fill-3" fill="#192324" mask="url(#mask-2)" points="13 23 15 23 15 21 13 21"></polygon>
+                    <polygon id="Fill-5" fill="#192324" mask="url(#mask-2)" points="8 20 10 20 10 18 8 18"></polygon>
+                    <polygon id="Fill-6" fill="#192324" mask="url(#mask-2)" points="3 17 5 17 5 15 3 15"></polygon>
+                    <polygon id="Fill-7" fill="#192324" mask="url(#mask-2)" points="21 15 23 15 23 13 21 13"></polygon>
+                    <polygon id="Fill-8" fill="#192324" mask="url(#mask-2)" points="18 10 20 10 20 8 18 8"></polygon>
+                    <polygon id="Fill-9" fill="#192324" mask="url(#mask-2)" points="15 5 17 5 17 3 15 3"></polygon>
+                    <polygon id="Fill-10" fill="#192324" mask="url(#mask-2)" points="31 7 33 7 33 5 31 5"></polygon>
+                    <polygon id="Fill-11" fill="#192324" mask="url(#mask-2)" points="31 12 33 12 33 10 31 10"></polygon>
+                    <polygon id="Fill-12" fill="#192324" mask="url(#mask-2)" points="31 2 33 2 33 0 31 0"></polygon>
+                    <polygon id="Fill-13" fill="#192324" mask="url(#mask-2)" points="49 23 51 23 51 21 49 21"></polygon>
+                    <polygon id="Fill-14" fill="#192324" mask="url(#mask-2)" points="54 20 56 20 56 18 54 18"></polygon>
+                    <polygon id="Fill-15" fill="#192324" mask="url(#mask-2)" points="59 17 61 17 61 15 59 15"></polygon>
+                    <polygon id="Fill-16" fill="#192324" mask="url(#mask-2)" points="41 15 43 15 43 13 41 13"></polygon>
+                    <polygon id="Fill-17" fill="#192324" mask="url(#mask-2)" points="44 10 46 10 46 8 44 8"></polygon>
+                    <polygon id="Fill-18" fill="#192324" mask="url(#mask-2)" points="47 5 49 5 49 3 47 3"></polygon>
+                    <polygon id="Fill-19" fill="#192324" mask="url(#mask-2)" points="5 33 7 33 7 31 5 31"></polygon>
+                    <polygon id="Fill-20" fill="#192324" mask="url(#mask-2)" points="10 33 12 33 12 31 10 31"></polygon>
+                    <polygon id="Fill-21" fill="#192324" mask="url(#mask-2)" points="0 33 2 33 2 31 0 31"></polygon>
+                    <polygon id="Fill-22" fill="#192324" mask="url(#mask-2)" points="13 43 15 43 15 41 13 41"></polygon>
+                    <polygon id="Fill-23" fill="#192324" mask="url(#mask-2)" points="8 46 10 46 10 44 8 44"></polygon>
+                    <polygon id="Fill-24" fill="#192324" mask="url(#mask-2)" points="3 49 5 49 5 47 3 47"></polygon>
+                    <polygon id="Fill-25" fill="#192324" mask="url(#mask-2)" points="57 33 59 33 59 31 57 31"></polygon>
+                    <polygon id="Fill-26" fill="#192324" mask="url(#mask-2)" points="52 33 54 33 54 31 52 31"></polygon>
+                    <polygon id="Fill-27" fill="#192324" mask="url(#mask-2)" points="62 33 64 33 64 31 62 31"></polygon>
+                    <polygon id="Fill-28" fill="#192324" mask="url(#mask-2)" points="49 43 51 43 51 41 49 41"></polygon>
+                    <polygon id="Fill-29" fill="#192324" mask="url(#mask-2)" points="54 46 56 46 56 44 54 44"></polygon>
+                    <polygon id="Fill-30" fill="#192324" mask="url(#mask-2)" points="59 49 61 49 61 47 59 47"></polygon>
+                    <path d="M41,55 L39,55 L39.03,50.758 L41,42.877 L41,34.001 C41,33.449 40.552,33 40,33 C39.448,33 39,33 39,34 L37,34 L37,32.001 C37,31.449 36.552,31 36,31 C35.448,31 35,31 35,32 L33,32 L33,30.001 C33,29.449 32.552,29.001 32,29.001 C31.448,29.001 31,29.449 31,30 L29,30 C29,28.346 30.346,27.001 32,27.001 C33.381,27.001 34.548,27.939 34.894,29.211 C35.237,29.075 35.61,29.001 36,29.001 C37.381,29.001 38.548,29.939 38.894,31.211 C39.237,31.075 39.61,31.001 40,31.001 C41.654,31.001 43,32.346 43,34.001 L42.97,43.243 L41,51.124 L41,55 Z" id="Fill-31" fill="#192324" mask="url(#mask-2)"></path>
+                    <polygon id="Fill-32" fill="#192324" mask="url(#mask-2)" points="33 37 35 37 35 32 33 32"></polygon>
+                    <polygon id="Fill-33" fill="#192324" mask="url(#mask-2)" points="37 38 39 38 39 34 37 34"></polygon>
+                    <path d="M27,38 L25,38 L25,21.001 C25,19.346 26.346,18.001 28,18.001 C29.654,18.001 31,19.346 31,21.001 L31,36 L29,36 L29,21.001 C29,20.449 28.552,20.001 28,20.001 C27.448,20.001 27,20.449 27,21.001 L27,38 Z" id="Fill-34" fill="#192324" mask="url(#mask-2)"></path>
+                    <path d="M28,52 L26,52 L26,50.334 L20,42.334 L20,34.696 L20.17,34.443 C20.338,34.193 21.872,32 24,32 L24,34 C23.221,34 22.384,34.857 22,35.332 L22,41.667 L28,49.667 L28,52 Z" id="Fill-35" fill="#192324" mask="url(#mask-2)"></path>
+                    <polygon id="Fill-36" fill="#192324" mask="url(#mask-2)" points="41 64 39 64 39 56 26 56 26 64 24 64 24 54 41 54"></polygon>
+                    <polygon id="Fill-37" fill="#192324" mask="url(#mask-2)" points="28 60 30 60 30 58 28 58"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,40 @@
+.screen.form.js-form#trySystem
+  .wrap
+    form(name="contactForm" novalidate id="contactForm" class="ng-submitted")
+      label.form__label
+        | Как к вам обращаться?
+      .form__field.js-form-field
+        label.form__placeholder(for="name")
+          | Фамилия, Имя и Отчество
+        input.input__text(type="text" required autocomplete="off" value="" id="name" name="name")
+      .form__field.js-form-field
+        label.form__placeholder(for="company")
+          | Название вашей компании
+        input.input__text(type="text" autocomplete="off" value="" id="company" name="company")
+      label.form__label
+        | Контактная информация
+      .form__field.js-form-field
+        label.form__placeholder(for="phone")
+          | Телефон
+        input.input__text(type="tel"  autocomplete="off" value="" id="phone" name="phone" required="")
+      .form__field.js-form-field
+        .form__message
+          | Неверный формат ввода
+        label.form__placeholder(for="email")
+          | email
+        input.input__text(type="email" autocomplete="off" value="" id="email" name="email" required="")
+
+      input.input__text(type="hidden" value="corp" name="contract_type" required="")
+      .form__bottom
+        .form__bottom-item
+          .checkbox-field
+            input.input__checkbox(type="checkbox" id="successDataFlag" name="agreed" value="true" checked="" required="")
+            label(class="checkbox-field__label" for="successDataFlag")
+              .checkbox-field__check
+                svg(class='svg-icon')
+                  use(xlink:href='#icon-checkbox-check')
+              | Даю согласие на обработку персональных данных
+
+        .form__bottom-item._button
+          button(type="submit" class="button")
+            | Отправить

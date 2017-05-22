@@ -1,0 +1,31 @@
+section.screen.easy-start.ng-scope
+  div.screen__wrap
+    // ngIf: vm.$state.current.data.activeTab == 'com'
+    // ngIf: vm.$state.current.data.activeTab == 'corp'
+    h3(ng-if="vm.$state.current.data.activeTab == 'corp'" class="ng-scope")
+      | Начните зарабатывать с OneTwoTrip уже сейчас
+    // end ngIf: vm.$state.current.data.activeTab == 'corp'
+    .easy-start__content
+      .easy-start__item
+        .easy-start__icon
+          svg(class='svg-icon')
+            use(xlink:href='#icon-step-one')
+        p.screen__text
+          | Заполните простую
+          br
+          | форм
+      .easy-start__item
+        .easy-start__icon
+          svg(class='svg-icon')
+            use(xlink:href='#icon-step-two')
+        p.screen__text
+          | Получите письмо
+          br
+          | с информацией
+      .easy-start__item
+        .easy-start__icon
+          svg(class='svg-icon')
+            use(xlink:href='#icon-step-three')
+        p.screen__text
+          | Приступайте
+          br

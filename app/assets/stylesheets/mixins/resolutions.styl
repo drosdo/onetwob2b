@@ -1,0 +1,15 @@
+mediaHigherThen(size)
+  @media (min-width: size + 1)
+    {block}
+
+mediaMax(size)
+  @media (max-width: size)
+    {block}
+
+mediaMinAcpect(width, height)
+  @media (min-aspect-ratio: width / height)
+    {block}
+
+mediaRetina()
+  @media (-webkit-min-device-pixel-ratio: 2)
+    {block}

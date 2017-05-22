@@ -1,0 +1,41 @@
+.checkbox-field
+  position relative
+  &__label
+    color #424242
+    font-size 14px
+    font-weight 400
+    letter-spacing .2px
+    line-height 24px
+    cursor pointer
+    display block
+    position relative
+    padding-left 35px
+    margin 0
+    position relative
+
+  &__check
+    content ""
+    display block
+    width 22px
+    height 22px
+    background-color #eee
+    border 2px solid #eee
+    border-radius 2px
+    position absolute
+    left 0
+    top 0
+    svg
+      display none
+
+  input:checked ~ .checkbox-field__label
+    .checkbox-field__check
+      color #544e3b
+      border-color #ffc901
+      background-color #ffc901
+      text-align center
+      line-height 20px
+
+      svg
+        display inline-block
+        width 12px
+        height 10px
