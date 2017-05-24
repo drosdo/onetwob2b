@@ -1,1 +1,117 @@
 .header
+  position absolute
+  left 0
+  right 0
+  top 0
+  z-index 10
+  padding 20px 40px
+
+
+  +mediaMax($small)
+    ._mobile-menu-open &
+      padding 0
+      height 100vh
+      width 100%
+      background rgba(58,58,58, .9)
+      position fixed
+
+
+  &__mobile-menu-icon
+    display none
+    +mediaMax($small)
+      cursor pointer
+      display block
+      position absolute
+      z-index 10
+      height 2rem
+      width 2rem
+      top 2rem
+      left 1.5rem
+      &._close
+        display none
+        ._mobile-menu-open &
+          display block
+      &._open
+        ._mobile-menu-open &
+          display none
+      svg
+        height 1.6rem
+        width 1.6rem
+
+  &__nav
+    display flex
+    flex-direction row
+    flex-wrap nowrap
+    justify-content space-between
+    align-content center
+    align-items center
+
+
+
+
+  &__left
+  &__right
+    order 0
+    flex 0 1 auto
+    align-self auto
+
+  &__left
+    +mediaMax($small)
+      display none
+      ._mobile-menu-open &
+        display flex
+      width 100%
+      flex-direction column
+      justify-content center
+      align-content center
+      align-items center
+      position absolute
+      top 10rem
+      &._closed
+        height 2rem
+        width 2rem
+        visibility hidden
+  &__right
+    +mediaMax($small)
+       position absolute
+       top 2rem
+       right 1.5rem
+
+
+  &__login
+    color #fff
+    font-size 13px
+    font-weight 400
+    letter-spacing .4px
+    line-height 30px
+    text-decoration none
+    text-transform uppercase
+    display inline-block
+    vertical-align middle
+    height 32px
+    padding 0 15px
+    border 1px solid hsla(0,0%,100%,.6)
+    +mediaMax($small)
+      position relative
+      overflow hidden
+      border none
+      text-indent -3000px
+      width 1.8rem
+      height 1.8rem
+
+  &__mobile-login-icon
+    display none
+    +mediaMax($small)
+      display block
+      position absolute
+      width 1.8rem
+      height 1.4rem
+      left 0
+      top 0
+      svg
+        display block
+        width 1.8rem
+        height 1.4rem
+
+
+

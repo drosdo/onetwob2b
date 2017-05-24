@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('JavaScript Run!');
-
 module.exports = class {
   constructor(options) {
     this.wrap = options.wrap;

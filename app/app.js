@@ -10,7 +10,6 @@ require('webpack-svgstore-plugin/src/helpers/svgxhr')(__svg__);
 
 require('_stylesheets/app.styl');
 require('_js/modules')();
-// Depends
-//var $ = require('jquery');
+
 
 

@@ -23,7 +23,7 @@ module.exports = function(_path) {
 
   // define entry points
   const entryPoints = {
-    application: _path + '/app/app.js'
+    application: _path + '/app/app.js',
   };
   // check vendors
   if (dependencies) entryPoints.vendors = dependencies;
@@ -107,6 +107,16 @@ module.exports = function(_path) {
         chunks: ['application', 'vendors'],
         filename: 'index.html',
         template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'index.pug')
+      }),
+      new HtmlPlugin({
+        chunks: ['application', 'vendors'],
+        filename: 'commissioner.html',
+        template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'commissioner.pug')
+      }),
+      new HtmlPlugin({
+        chunks: ['application', 'vendors'],
+        filename: 'groups.html',
+        template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'groups.pug')
       }),
       // create svgStore instance object
       new SvgStore({

@@ -4,16 +4,50 @@
   background-size cover
   background-position-x 50%
   text-align center
+  padding 35px 0 0
+  +mediaMax($small)
+    padding-top 13rem
   +mediaMax($small)
     height 48.9rem
   &._first
     background-image url('~_images/teaser-first@x2.jpg')
+    padding 280px 0 0
     +mediaMax($small)
       background-image url('~_images/teaser-first-mobile@x2.jpg')
 
   &._agents
     background-image url('~_images/teaser-agents@x2.jpg')
+    padding 280px 0 0
     +mediaMax($small)
       background-image url('~_images/teaser-agents-mobile@x2.jpg')
   &._groups
     background #648aa4
+    padding 190px 0 0
+
+  &__blocks
+    width 100%
+    margin auto
+    display flex
+    justify-content space-around
+    align-items stretch
+    +mediaMax($small)
+      display block
+
+  &__block
+    width 280px
+    text-align center
+    +mediaMax($small)
+      width 100%
+      padding 0 2rem
+      margin-bottom 5rem
+
+  &__icon
+    margin-bottom 25px
+    svg
+      width 64px
+      height 64px
+    +mediaMax($small)
+      margin-bottom 2.5rem
+      svg
+        width 6.4rem
+        height 6.4rem
