@@ -25,6 +25,7 @@ module.exports = class {
   toggleDialog(open) {
     if(open){
       document.body.classList.add('_dialog-open');
+      
     } else {
       document.body.classList.remove('_dialog-open');
     }

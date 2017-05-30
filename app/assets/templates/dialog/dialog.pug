@@ -1,6 +1,6 @@
 .dialog.js-dialog
   .dialog__popup.js-form
-    form(name="loginForm" novalidate id="contactForm" class="dialog__form")
+    form(name="loginForm" novalidate id="loginForm" class="dialog__form")
       .dialog__fieldset
         .dialog__title
           | Вход в аккаунт
@@ -12,6 +12,16 @@
           label.form__placeholder(for="userPass")
             | Пароль
           input.input__text(type="text" required value="" id="userPass" name="userPass")
+      .dialog__errors.js-form-errors
+        .dialog__text.dialog__error._unknown
+          | Произошёл сбой, попробуйте позже. Приносим извинения.
+        .dialog__text.dialog__error._wrongLoginOrPass
+          | Неправильный логин или пароль.
+        .dialog__text.dialog__error._inactiveUser
+          | Извините, но ваш аккаунт заблокирован.
+        .dialog__text.dialog__error._inactiveEntity
+          | У вас нет доступа к этому сервису. Чтобы его включить, позвоните по телефону +7 (495) 646-83-62.
+
       .dialog__field
         button.dialog__button
           | войти

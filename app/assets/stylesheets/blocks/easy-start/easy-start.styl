@@ -6,14 +6,21 @@
     +mediaMax($small)
       display block
   &__item
-    width 209px
+    width 269px
     text-align left
     padding 0 20px
     +mediaMax($small)
       @extend .clearfix
-      width 70%
+      width 23rem
       padding 0
       margin 0 auto 1rem
+      br
+        display inline
+        content ' '
+        clear none
+        &:after
+          content ' '
+          display inline
   &__icon
     margin-bottom 25px
     margin-right 10px
@@ -21,3 +28,8 @@
     svg
       width 44px
       height 44px
+    +mediaMax($small)
+      margin 0 2rem 3rem
+      svg
+        width 4.4rem
+        height 4.4rem

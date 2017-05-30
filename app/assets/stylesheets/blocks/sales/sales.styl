@@ -6,15 +6,38 @@
     justify-content space-around
     align-items stretch
     +mediaMax($small)
-      display block
+      flex-direction column
+      align-items center
   &__item
     width 210px
     text-align center
     order 0
     flex 0 1 auto
     align-self auto
+    +mediaMax($small)
+      width 28rem
+      margin-bottom 5rem
+      &:last-child
+        margin-bottom 0
   &__icon
     margin-bottom 25px
     svg
       width 50px
       height 50px
+    +mediaMax($small)
+      margin-bottom 2rem
+      svg
+        width 5rem
+        height 5rem
+  &__title
+    br
+      display inline
+      content ' '
+      clear none
+      &:after
+        content ' '
+        display inline
+
+  .controls
+    +mediaMax($small)
+      display none

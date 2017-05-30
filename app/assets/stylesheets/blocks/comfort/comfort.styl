@@ -7,12 +7,18 @@
       display block
   &__item
     width 280px
+    padding 0 10px
     text-align center
     +mediaMax($small)
       width 84%
       margin 0 auto 4rem
   &__icon
-    margin-bottom 25px
+    margin-bottom 15px
     svg
       width 64px
-      height 64px
+      height 64
+    +mediaMax($small)
+      margin-bottom 1.5rem
+      svg
+        width 6.4rem
+        height 6.4rem

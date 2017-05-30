@@ -3,10 +3,12 @@
   &__content
     display flex
     justify-content space-between
-    align-content stretch
-    align-items stretch
+    align-content justify-items
+    align-items justify-content
     flex-direction row
     flex-wrap wrap
+    max-width 870px
+    margin auto
     +mediaMax($small)
       display block
 
@@ -15,16 +17,29 @@
     flex 0 0 40%
     align-self auto
     margin-bottom 70px
+    width 420px
+    &:last-child
+      margin-bottom 0
+    +mediaMax($small)
+      width auto
+  &__title
+    margin-bottom 7px
+
   &__icon
     float left
-    width 98px
+    width 97px
+    text-align left
     +mediaMax($small)
       float none
+      width 6.4
       margin-bottom 1rem
       display inline-block
     svg
       width 64px
       height 64px
+      +mediaMax($small)
+        width 6.4rem
+        height 6.4rem
   &__list
     overflow hidden
     text-align left
@@ -36,13 +51,13 @@
       font-weight 400
       letter-spacing .2px
       line-height 24px
-      padding-left 22px
+      padding-left 24px
       position relative
 
       +mediaMax($small)
         padding 0
-        font-size 1.2rem
-        line-height 1.6
+        font-size 1.4rem
+        line-height 2.4rem
         display flex
         flex-direction column
         justify-content center
@@ -58,18 +73,19 @@
 
     &-icon
       position absolute
-      left -22px
-      top 1px
-      width 14px
-      height 14px
+      left -24px
+      top -3px
+      width 12px
+      height 12px
       svg
-        width 14px
-        height 14px
+        width 12px
+        height 12px
       +mediaMax($small)
-        left -1.9rem
+        left -2.4rem
         top .1rem
-        width 1rem
-        height 1rem
+        width 1.8rem
+        height 2.4rem
         svg
-          width 1.05rem
-          height 1.05rem
+          width 1.2rem
+          height 1.2rem
+          overflow visible

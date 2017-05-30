@@ -5,7 +5,6 @@
     <desc>Created with Sketch.</desc>
     <defs>
         <polygon id="path-1" points="60 56.2788 60 0.0008 0.0004 0.0008 0.0004 56.2788 60 56.2788"></polygon>
-        <polygon id="path-3" points="0 64 60 64 60 0 0 0"></polygon>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="b2b_landing_com" transform="translate(-245.000000, -1585.000000)">
@@ -24,13 +23,9 @@
                         <g id="Clip-14"></g>
                         <path d="M44.4834,56.2788 L43.5164,54.5278 C52.4504,49.5928 58.0004,40.1948 58.0004,30.0008 C58.0004,14.5608 45.4394,2.0008 30.0004,2.0008 C14.5604,2.0008 2.0004,14.5608 2.0004,30.0008 C2.0004,40.1948 7.5494,49.5928 16.4834,54.5278 L15.5164,56.2788 C5.9454,50.9918 0.0004,40.9228 0.0004,30.0008 C0.0004,13.4588 13.4584,0.0008 30.0004,0.0008 C46.5424,0.0008 60.0004,13.4588 60.0004,30.0008 C60.0004,40.9228 54.0544,50.9918 44.4834,56.2788" id="Fill-13" fill="#192324" mask="url(#mask-2)"></path>
                     </g>
-                    <mask id="mask-4" fill="white">
-                        <use xlink:href="#path-3"></use>
-                    </mask>
-                    <g id="Clip-17"></g>
-                    <polygon id="Fill-16" fill="#192324" mask="url(#mask-4)" points="29 30 31 30 31 28 29 28"></polygon>
-                    <polygon id="Fill-18" fill="#192324" mask="url(#mask-4)" points="29 26 31 26 31 24 29 24"></polygon>
-                    <polygon id="Fill-19" fill="#192324" mask="url(#mask-4)" points="29 22 31 22 31 20 29 20"></polygon>
+                    <polygon id="Fill-16" fill="#192324" points="29 30 31 30 31 28 29 28"></polygon>
+                    <polygon id="Fill-18" fill="#192324" points="29 26 31 26 31 24 29 24"></polygon>
+                    <polygon id="Fill-19" fill="#192324" points="29 22 31 22 31 20 29 20"></polygon>
                 </g>
             </g>
         </g>

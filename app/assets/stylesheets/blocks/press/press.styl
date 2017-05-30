@@ -7,6 +7,10 @@
     line-height 15px
     display block
     margin 0 auto 15px
+    +mediaMax($small)
+      font-size 1.3rem
+      line-height 1.5rem
+
   
   &__links
     display flex
@@ -26,9 +30,31 @@
     &:hover
       opacity 1
     img
-      width 50%
+      width 100%
+
+    &._vd
+      width 119px
+      +mediaMax($small)
+        width 11.9rem
+    &._vc
+      width 76px
+      +mediaMax($small)
+        width 7.6rem
+    &._sc
+      width 119px
+      +mediaMax($small)
+        width 11.9rem
+    &._bs
+      width 124px
+      +mediaMax($small)
+        width 12.4rem
+    &._rm
+      width 50px
+      +mediaMax($small)
+        width 5rem
 
     +mediaMax($small)
       flex-shrink 0
+      padding 0 1rem
       //display inline-block
-      width 10rem
+

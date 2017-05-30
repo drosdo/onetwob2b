@@ -43,8 +43,11 @@ module.exports = function(_path) {
 
     // resolves modules
     resolve: {
-      extensions: ['.js', '.jsx'],
-      modules: ['node_modules'],
+      extensions: ['*','.js','.jsx'],
+      modules: [
+        './app',
+        'node_modules'
+      ],
       alias: {
         _svg: path.join(_path, 'app', 'assets', 'svg'),
         _fonts: path.join(_path, 'app', 'assets', 'fonts'),
@@ -75,7 +78,10 @@ module.exports = function(_path) {
           test: /\.js$/,
           use: {
             loader: 'babel-loader',
-            options: { presets: ['es2015'] }
+            options: { presets: ['es2015']}
+            /*options: { presets: [['es2015', {
+              include: [/whatwg-.*!/]
+            }]] }*/
           },
           exclude: /(node_modules|bower_components)/
         }
@@ -88,12 +94,25 @@ module.exports = function(_path) {
         name: 'vendors',
         filename: 'assets/js/vendors.[hash].js'
       }),
+      new webpack.ProvidePlugin({
+        Promise: 'es6-promise',
+        fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+      }),
       new TextPlugin('assets/css/[name].[chunkhash].css'),
       new webpack.LoaderOptionsPlugin({
         options: {
-          postcss: [
-            autoprefixer({ browsers: ['last 5 versions'] })
-          ]
+          postcss: [autoprefixer({ browsers: [
+            'ie >= 11',
+            'Firefox >= 43',
+            'Chrome >= 47',
+            'ChromeAndroid >= 47',
+            'Safari >= 9',
+            'Opera >= 34',
+            'OperaMini >= 13',
+            'iOS >= 7',
+            'Android >= 4'
+          ] })]
+
         }
       }),
       new Manifest(path.join(_path + '/config', 'manifest.json'), {
@@ -106,16 +125,19 @@ module.exports = function(_path) {
         title: 'OneTwoTRip',
         chunks: ['application', 'vendors'],
         filename: 'index.html',
+        favicon: path.join(_path, 'app', 'assets', 'images', 'favicon.ico'),
         template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'index.pug')
       }),
       new HtmlPlugin({
         chunks: ['application', 'vendors'],
         filename: 'commissioner.html',
+        favicon: path.join(_path, 'app', 'assets', 'images', 'favicon.ico'),
         template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'commissioner.pug')
       }),
       new HtmlPlugin({
         chunks: ['application', 'vendors'],
         filename: 'groups.html',
+        favicon: path.join(_path, 'app', 'assets', 'images', 'favicon.ico'),
         template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'groups.pug')
       }),
       // create svgStore instance object

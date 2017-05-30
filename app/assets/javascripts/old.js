@@ -1,5 +1,5 @@
 jQuery(function() {
-    var onPopUpShow = function (top) {
+   /* var onPopUpShow = function (top) {
         jQuery('body').css(
             {
                 position: 'fixed',
@@ -8,13 +8,13 @@ jQuery(function() {
             }
         );
         jQuery('html').css({"overflow-y": 'scroll'});
-    };
+    };*/
 
-    var isNotValidItem = function (item) {
+    /*var isNotValidItem = function (item) {
         return (!jQuery(item).val() || (jQuery(item).attr('type') == "checkbox" && !jQuery(item).is(':checked')));
-    };
+    };*/
 
-    var validateForm = function (form) {
+    /*var validateForm = function (form) {
         var required = jQuery(form).find(':input[required]');
         var isValid = true;
         jQuery.each(required, function (key, val) {
@@ -35,7 +35,7 @@ jQuery(function() {
 
         return isValid;
     };
-
+*/
     jQuery('.md-dialog-container').click(function (event) {
         if (!jQuery(event.target).parents('md-dialog').length) {
             jQuery('body').removeAttr("style");
@@ -54,12 +54,7 @@ jQuery(function() {
         jQuery('.success-contact-form-dialog').hide();
     });
 
-    jQuery("[anchor]").click(function(){
-        jQuery('html, body').animate({
-            scrollTop: jQuery('#' + jQuery.attr(this, 'anchor')).offset().top
-        }, 500);
-        return false;
-    });
+
 
     // signin form
     var input = jQuery('#auth-form md-input-container input');

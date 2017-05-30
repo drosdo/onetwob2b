@@ -1,7 +1,12 @@
-<svg id="SvgjsSvg1025" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-	 xmlns:svgjs="http://svgjs.com/svgjs" width="24" height="24">
-	<defs id="SvgjsDefs1026"></defs>
-	<path id="x_icon"
-		  d="M607 134.41L605.59 133L600 138.59L594.41 133L593 134.41L598.59 140L593 145.59L594.41 147L600 141.41L605.59 147L607 145.59L601.41 140Z "
-		   fill-opacity="1" transform="matrix(1,0,0,1,-588,-128)"></path>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>close-dialog</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="close-dialog" fill-rule="nonzero">
+            <polygon id="x_icon" points="14 1.41 12.59 0 7 5.59 1.41 0 0 1.41 5.59 7 0 12.59 1.41 14 7 8.41 12.59 14 14 12.59 8.41 7"></polygon>
+        </g>
+    </g>
 </svg>

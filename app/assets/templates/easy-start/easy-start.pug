@@ -1,12 +1,9 @@
-section.screen.easy-start.ng-scope
+section.screen.easy-start
   div.screen__wrap
-    // ngIf: vm.$state.current.data.activeTab == 'com'
-    // ngIf: vm.$state.current.data.activeTab == 'corp'
-    h3(ng-if="vm.$state.current.data.activeTab == 'corp'" class="ng-scope")
+    h3
       | Получить доступ к современному
       br
       |тревел-инструменту прямо сейчас
-    // end ngIf: vm.$state.current.data.activeTab == 'corp'
     .easy-start__content
       .easy-start__item
         .easy-start__icon
@@ -15,7 +12,7 @@ section.screen.easy-start.ng-scope
         p.screen__text
           | Заполните простую
           br
-          | форм
+          | форму
       .easy-start__item
         .easy-start__icon
           svg(class='svg-icon')

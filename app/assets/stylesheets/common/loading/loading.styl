@@ -1,0 +1,76 @@
+.loading
+  display none
+  ._loading &
+    display block
+
+  position fixed
+  left 0
+  right 0
+  top 0
+  bottom 0
+  z-index 9999
+  background hsla(0,0%,100%,.5)
+
+  &__spin
+    position absolute
+    left 50%
+    top 50%
+    margin -32px 0 0 -32px
+    width 65px
+    height 65px
+    animation rotator 1.4s linear infinite
+    #icon-spin
+      .path
+        stroke-dasharray 187
+        stroke-dashoffset 0
+        transform-origin center
+        animation dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite
+    svg
+      width 65px
+      height 65px
+      stroke-width 6
+      stroke-dasharray 187
+      stroke-dashoffset 0
+      transform-origin center
+      animation dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite
+    +mediaMax($small)
+      margin -3.25rem 0 0 -3.25rem
+      width 6.5rem
+      height 6.5rem
+
+
+@keyframes dash
+  0%
+    stroke-dashoffset 187
+
+  50%
+    stroke-dashoffset 46.75
+    transform rotate(135deg)
+
+  100%
+    stroke-dashoffset 187
+    transform rotate(450deg)
+
+@keyframes colors
+  0%
+    stroke #4285f4
+
+  25%
+    stroke #de3e35
+
+  50%
+    stroke #f7c223
+
+  75%
+    stroke #1b9a59
+
+  100%
+    stroke #4285f4
+
+
+@keyframes rotator
+  0%
+    transform rotate(0deg)
+
+  100%
+    transform rotate(270deg)

@@ -1,13 +1,14 @@
 'use strict';
-
-const Form = require('./form');
-const MobileMenu = require('./mobile-menu');
-const Dialog = require('./dialog');
+import Form from './form';
+import MobileMenu from './mobile-menu';
+import Dialog from './dialog';
+import Anchor from './anchor';
 
 module.exports = function () {
   let forms = document.querySelectorAll('.js-form');
   let mobileMenu = document.querySelector('.js-mobile-menu');
   let dialog = document.querySelector('.js-dialog');
+  let anchors = document.querySelectorAll('[anchor]');
   /* FORM */
   if (forms) {
     Array.prototype.forEach.call(forms, form => {
@@ -31,5 +32,15 @@ module.exports = function () {
       wrap: dialog
     };
     new Dialog(options);
+  }
+
+  // ANCHOR
+  if (anchors) {
+    Array.prototype.forEach.call(anchors, anchor => {
+      let options = {
+        anchor: anchor
+      };
+      new Anchor(options);
+    })
   }
 };

@@ -9,9 +9,21 @@
     margin 0 10px
     &:not([href*=tel])
       color #5baed6
-
+    +mediaMax($small)
+      font-size 2.4rem
+      line-height 3.2rem
+      margin 0 1rem 1rem
   &__icon
     margin-bottom 25px
     svg
       width 64px
       height 64px
+      +mediaMax($small)
+        width 6.4rem
+        height 6.4rem
+    +mediaMax($small)
+      margin-bottom 2.5rem
+
+  &__title
+    +mediaMax($small)
+      margin-bottom 1.3rem

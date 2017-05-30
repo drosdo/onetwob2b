@@ -14,8 +14,9 @@
     line-height 1
     outline none
     transition background 300ms ease
-    -webkit-appearance none
-    -moz-appearance none
+    appearance none
+    &::-ms-clear
+      display none
     ._placeholder-on &
       padding 20px 12px 0
     &:hover
@@ -29,6 +30,15 @@
       border 1px solid #FF6B00
       border-bottom-left-radius 0
 
+    +mediaMax($small)
+      height 5.6rem
+      border-radius .2rem
+      padding 1.6rem 1.2rem
+      margin-bottom 1.2rem
+      font-size 1.6rem
+      letter-spacing .02rem
+      ._placeholder-on &
+        padding 2rem 1.2rem 0
 
   &__checkbox
     position absolute
