@@ -1,0 +1,57 @@
+html
+  box-sizing border-box
+
+*
+*:before
+*:after
+  box-sizing inherit
+
+html
+body
+  height 100%
+  width 100%
+  font-family Roboto, sans-serif
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  &._mobile-menu-open
+    overflow hidden
+  &._dialog-open
+  &._message-open
+  &._message-error-open
+    position fixed
+    width 100%
+    top 0
+
+html
+  font-size 62.5%
+  text-rendering optimizeLegibility
+  font-feature-settings 'kern' 1
+  font-kerning normal
+  +mediaMax($small)
+    // font-size 2.778vw
+/*body
+  font-size 14px
+  font-size 1.4rem*/
+a
+a:hover
+  text-decoration none
+  color #5baed6
+
+a:focus
+  outline none
+  border none
+
+h1
+h2
+h3
+h4
+h5
+  margin 0
+
+h3
+  font-weight 400
+
+ul 
+  list-style none
+  padding 0
+  margin 0

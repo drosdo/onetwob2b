@@ -1,0 +1,35 @@
+.easy-start
+  &__content
+    display flex
+    justify-content center
+    align-items center
+    +mediaMax($small)
+      display block
+  &__item
+    width 269px
+    text-align left
+    padding 0 20px
+    +mediaMax($small)
+      @extend .clearfix
+      width 23rem
+      padding 0
+      margin 0 auto 1rem
+      br
+        display inline
+        content ' '
+        clear none
+        &:after
+          content ' '
+          display inline
+  &__icon
+    margin-bottom 25px
+    margin-right 10px
+    float left
+    svg
+      width 44px
+      height 44px
+    +mediaMax($small)
+      margin 0 2rem 3rem
+      svg
+        width 4.4rem
+        height 4.4rem

@@ -1,0 +1,60 @@
+.checkbox-field
+  position relative
+  &__label
+    color #424242
+    font-size 14px
+    font-weight 400
+    letter-spacing .2px
+    line-height 24px
+    cursor pointer
+    display block
+    position relative
+    padding-left 35px
+    margin 0
+    +mediaMax($small)
+      font-size 1.4rem
+      letter-spacing .02px
+      line-height 2.4rem
+      padding-left 3.5rem
+
+  &__check
+    display block
+    width 22px
+    height 22px
+    background-color #eee
+    border 2px solid #eee
+    border-radius 2px
+    position absolute
+    left 0
+    top 0
+    ._invalid &
+      border-color #ffc8c7
+      background-color #ffc8c7
+    svg
+      display none
+    +mediaMax($small)
+      width 2.2rem
+      height 2.2rem
+      border .2rem solid #eee
+      border-radius .2rem
+
+  input:checked ~ .checkbox-field__label
+
+    .checkbox-field__check
+      color #544e3b
+      border-color #ffc901
+      background-color #ffc901
+      text-align center
+      line-height 20px
+
+
+      svg
+        display inline-block
+        width 12px
+        height 10px
+
+      +mediaMax($small)
+        line-height 2rem
+        svg
+          width 1.2rem
+          height 1rem

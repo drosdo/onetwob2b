@@ -1,0 +1,84 @@
+.form
+  background #fff
+  form
+    width 576px
+    margin 0 auto
+    +mediaMax($small)
+      width 90%
+
+  &__field
+    position relative
+
+  &__label
+    position relative
+    display block
+    margin 15px 0 17px
+    color #616161
+    font-size 20px
+    font-weight 500
+    letter-spacing .2px
+    line-height 28px
+    +mediaMax($small)
+      font-size 2rem
+      margin 1rem 0 1.7rem
+      letter-spacing .02rem
+      line-height 2.8rem
+
+  &__placeholder
+    color #9E9E9E
+    font-size 16px
+    font-weight 400
+    letter-spacing .2px
+    line-height 1
+    position absolute
+    left 12px
+    top 18px
+    transition all .2s
+    +mediaMax($small)
+      font-size 1.6rem
+      letter-spacing .02rem
+      left 1.2rem
+      top 1.8rem
+    ._placeholder-on &
+      position absolute
+      font-size 13px
+      line-height 24px
+      top 0
+      +mediaMax($small)
+        font-size 1.3rem
+        line-height 2.4rem
+  &__bottom
+    margin-top 22px
+    display flex
+    flex-direction row
+    flex-wrap nowrap
+    justify-content space-between
+    align-content center
+    align-items center
+    +mediaMax($small)
+      display block
+      margin-top 2.2rem
+
+  &__bottom-item
+    order 0
+    flex 0 1 auto
+    align-self auto
+    +mediaMax($small)
+      &._button
+        margin-top 2rem
+        text-align center
+
+  &__message
+    display none
+    ._wrong &
+      display block
+      position absolute
+      top 56px
+      color #fff
+      padding 6px 12px
+      font-size 14px
+      background #FF6B00
+      +mediaMax($small)
+        top 5.6rem
+        padding .6rem 1.2rem
+        font-size 1.4rem

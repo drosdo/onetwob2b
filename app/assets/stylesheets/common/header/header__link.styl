@@ -1,0 +1,41 @@
+.header__link
+  color #fff
+  font-size 13px
+  font-weight 400
+  letter-spacing .4px
+  line-height 24px
+  text-decoration none
+  text-transform uppercase
+  display inline-block
+  vertical-align middle
+  height 24px
+  padding 0 15px
+  border-radius 4px
+  position relative
+  &:hover
+    color #fff
+    text-decoration none
+
+  &._active
+    cursor default
+    pointer-events none
+    color #fff
+    text-decoration none
+    background hsla(0,0%,100%,.2)
+
+  +mediaMax($small)
+    text-align center
+    display block
+    width 100%
+    height 3.6rem
+    font-size 1.3rem
+    line-height 3.6rem
+    letter-spacing 0.04rem
+    padding 0
+    color #fff
+    &._active
+      pointer-events initial
+      cursor pointer
+      color #fff
+      text-decoration none
+      background transparent
