@@ -1,11 +1,19 @@
 doctype html
 html(lang="en")
   head
+    title
+      | OneTwoTrip для групповых перелетов и ж/д поездок
     include ../_head/_head.pug
+    meta(name="title" content="OneTwoTrip для групповых перелетов и ж/д поездок")
+    meta(name="description" content="Оформляйте билеты для групп с доступом к специальным тарифам и условиям!")
+    meta(property="og:image" content=require("_images/teaser-groups@x2.jpg"))
+    meta(property="twitter:image:src" content=require("_images/teaser-groups@x2.jpg"))
+
   body._groups-page
     .g-wrapper
       include ../header/header3.pug
       include ../teaser/teaser3.pug
+      include ../sales/sales.pug
       include ../excellence/excellence.pug
       include ../request/request.pug
       include ../contacts/contacts.pug

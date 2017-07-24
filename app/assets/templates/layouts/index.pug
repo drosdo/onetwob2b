@@ -1,7 +1,13 @@
 doctype html
 html(lang="en")
   head
+    title
+      | OneTwoTrip for Business - Организация деловых поездок сотрудников
     include ../_head/_head.pug
+    meta(name="title" content="OneTwoTrip for Business - Организация деловых поездок сотрудников")
+    meta(name="description" content="Удобный и современный онлайн-сервис организации командировок для вашего бизнеса")
+    meta(property="og:image" content=require("_images/teaser-first@x2.jpg"))
+    meta(property="twitter:image:src" content=require("_images/teaser-first@x2.jpg"))
   body
     .g-wrapper
       include ../header/header.pug

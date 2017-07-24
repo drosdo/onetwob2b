@@ -1,7 +1,5 @@
 .screen.form.request.js-form#trySystem
   .wrap
-    h2.request__title
-      | Отправьте запрос и наш менеджер свяжется с вами
     form(name="contactForm" novalidate id="contactForm" class="ng-submitted")
       label.form__label
         | Как к вам обращаться?
@@ -30,12 +28,14 @@
       .form__bottom
         .form__bottom-item
           .checkbox-field
-            input.input__checkbox(type="checkbox" id="successDataFlag" name="agreed" value="true" checked="" required="")
-            label(class="checkbox-field__label" for="successDataFlag")
+            input.input__checkbox(type="checkbox" id="successDataFlag" name="agreed" value="true" required="")
+            label(for="successDataFlag" class="checkbox-field__label")
               .checkbox-field__check
                 svg(class='svg-icon')
                   use(xlink:href='#icon-checkbox-check')
+            a(href="https://www.onetwotrip.com/ru/l10n/ru/d/agreement.pdf" target="_blank" class="checkbox-field__link")
               | Даю согласие на обработку персональных данных
+
 
         .form__bottom-item._button
           button(type="submit" class="button")

@@ -38,7 +38,7 @@ module.exports = function(_path) {
       path: path.join(_path, 'dist'),
       filename: path.join('assets', 'js', '[name].[hash].js'),
       chunkFilename: '[id].bundle.[chunkhash].js',
-      publicPath: '/'
+      publicPath: '/onetwob2b/'
     },
 
     // resolves modules
