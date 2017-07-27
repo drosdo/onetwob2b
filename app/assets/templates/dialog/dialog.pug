@@ -7,14 +7,12 @@
         .form__field.js-form-field
           label.form__placeholder(for="userLogin")
             | Логин
-          input.input__text(type="text" required value="" id="userLogin" name="userLogin")
+          input.input__text._white(type="text" required value="" id="userLogin" name="userLogin")
         .form__field.js-form-field
           label.form__placeholder(for="userPass")
             | Пароль
-          input.input__text(type="text" required value="" id="userPass" name="userPass")
-        .dialog__registration
-          a(href='/onetwob2b/')
-            | Регистрация
+          input.input__text._white(type="text" required value="" id="userPass" name="userPass")
+
       .dialog__errors.js-form-errors
         .dialog__text.dialog__error._unknown
           | Произошёл сбой, попробуйте позже. Приносим извинения.
@@ -28,6 +26,9 @@
       .dialog__field
         button.dialog__button
           | войти
+      .dialog__registration
+        a(href='/onetwob2b/registration.html')
+          | Зарегистрироваться
     .dialog__close-button.js-dialog-trigger-close
       svg(class='svg-icon')
         use(xlink:href='#icon-close-dialog')

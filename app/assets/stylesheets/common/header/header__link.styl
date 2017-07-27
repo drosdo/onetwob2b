@@ -12,8 +12,12 @@
   padding 0 15px
   border-radius 4px
   position relative
+  ._black &
+    color #000
   &:hover
     color #fff
+    ._black &
+      color #000
     text-decoration none
 
   &._active
@@ -22,6 +26,8 @@
     color #fff
     text-decoration none
     background hsla(0,0%,100%,.2)
+    ._black &
+      color #000
 
   +mediaMax($small)
     text-align center
@@ -33,10 +39,14 @@
     letter-spacing 0.04rem
     padding 0
     color #fff
+    ._black &
+      color #000
     &._active
       pointer-events initial
       cursor pointer
       color #fff
+      ._black &
+        color #000
       text-decoration none
       background transparent
     &._registration

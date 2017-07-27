@@ -140,6 +140,12 @@ module.exports = function(_path) {
         favicon: path.join(_path, 'app', 'assets', 'images', 'favicon.ico'),
         template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'groups.pug')
       }),
+      new HtmlPlugin({
+        chunks: ['application', 'vendors'],
+        filename: 'registration.html',
+        favicon: path.join(_path, 'app', 'assets', 'images', 'favicon.ico'),
+        template: path.join(_path, 'app', 'assets', 'templates', 'layouts', 'registration.pug')
+      }),
       // create svgStore instance object
       new SvgStore({
         prefix: 'icon-',
