@@ -1,0 +1,156 @@
+.screen.form.js-form(data='registration')
+  .wrap
+    form(name="contactForm" novalidate id="contactForm" class="ng-submitted")
+      label.form__label
+        | Как к вам обращаться?
+      .form__field.js-form-field
+        label.form__placeholder(for="name")
+          | Ваши Имя и Фамилия
+        input.input__text(type="text" required autocomplete="off" value="" id="name" name="name")
+      .form__field.js-form-field
+        label.form__placeholder(for="company")
+          | Название вашей компании
+        input.input__text(type="text" autocomplete="off" value="" id="company" name="company")
+      label.form__label
+        | Контактная информация
+      .form__field.js-form-field
+        label.form__placeholder(for="phone")
+          | Телефон для связи с вами
+        input.input__text(type="tel"  autocomplete="off" value="" id="phone" name="phone" required="")
+      .form__field.js-form-field
+        .form__message
+          | Неверный формат ввода
+        label.form__placeholder(for="email")
+          | Электронная почта
+        input.input__text(type="email" autocomplete="off" value="" id="email" name="email" required="")
+      label.form__label
+        | Юридическая информация
+      .form__field.js-form-field
+        label.form__placeholder(for="contract")
+          | Тип договора
+        select.input__select#contract(name="contract" autocomplete="off")
+          option(hidden value='')
+            | Тип договора
+          option(value='0')
+            | Договор 1
+          option(value='1')
+            | Договор 2
+        //.input__select-dropdown.js-select-sropdown
+          input.js-trigger-checkbox"(type="checkbox")
+          .select-dropdown__toggle-box
+            |^
+          .select-dropdown__trigger
+          .default-value.js-select-dropdown__default-value
+            .select-dropdown__item
+          .select-dropdown__result
+      .form__field.js-form-field
+        .form__message
+          | Неверный формат ввода
+        label.form__placeholder(for="inn")
+          | ИНН
+        input.input__text(type="text" autocomplete="off" value="" id="inn" name="inn" required="")
+      .form__extra
+        .form__field.js-form-field
+          .form__message
+            | Неверный формат ввода
+          label.form__placeholder(for="brand")
+            | Наименование
+          input.input__text(type="text" autocomplete="off" value="" id="brand" name="brand" required="")
+
+        .form__field.js-form-field
+          .form__message
+            | Неверный формат ввода
+          label.form__placeholder(for="brand")
+            | КПП
+          input.input__text(type="text" autocomplete="off" value="" id="kpp" name="kpp" required="")
+
+        .form__field.js-form-field
+          .form__message
+            | Неверный формат ввода
+          label.form__placeholder(for="brand")
+            | ОГРН
+          input.input__text(type="text" autocomplete="off" value="" id="ogrn" name="ogrn" required="")
+
+        .form__cols._2cols
+          .form__col
+            label.form__label
+              | Подписант&nbsp;
+              span.form__label-small
+                | в именительном падеже
+            .form__field.js-form-field
+              .form__message
+                | Неверный формат ввода
+              label.form__placeholder(for="family-nominative")
+                | Фамилия
+              input.input__text(type="text" autocomplete="off" value="" id="family-nominative" name="family-nominative" required="")
+            .form__cols._2cols
+              .form__col
+                .form__field.js-form-field
+                  .form__message
+                    | Неверный формат ввода
+                  label.form__placeholder(for="name-nominative")
+                    | Имя
+                  input.input__text(type="text" autocomplete="off" value="" id="name-nominative" name="name-nominative" required="")
+              .form__col
+                .form__field.js-form-field
+                  .form__message
+                    | Неверный формат ввода
+                  label.form__placeholder(for="surname-nominative")
+                    | Отчество
+                  input.input__text(type="text" autocomplete="off" value="" id="surname-nominative" name="surname-nominative" required="")
+            .form__field.js-form-field
+              .form__message
+                | Неверный формат ввода
+              label.form__placeholder(for="position-nominative")
+                | Должность
+              input.input__text(type="text" autocomplete="off" value="" id="position-nominative" name="position-nominative" required="")
+
+          .form__col
+            label.form__label
+              | Подписант&nbsp;
+              span.form__label-small
+                | в родительном падеже
+            .form__field.js-form-field
+              .form__message
+                | Неверный формат ввода
+              label.form__placeholder(for="family-genetive")
+                | Фамилия
+              input.input__text(type="text" autocomplete="off" value="" id="family-genetive" name="family-genetive" required="")
+            .form__cols._2cols
+              .form__col
+                .form__field.js-form-field
+                  .form__message
+                    | Неверный формат ввода
+                  label.form__placeholder(for="name-genetive")
+                    | Имя
+                  input.input__text(type="text" autocomplete="off" value="" id="name-genetive" name="name-genetive" required="")
+              .form__col
+                .form__field.js-form-field
+                  .form__message
+                    | Неверный формат ввода
+                  label.form__placeholder(for="surname-genetive")
+                    | Отчество
+                  input.input__text(type="text" autocomplete="off" value="" id="surname-genetive" name="surname-genetive" required="")
+            .form__field.js-form-field
+              .form__message
+                | Неверный формат ввода
+              label.form__placeholder(for="position-genetive")
+                | Должность
+              input.input__text(type="text" autocomplete="off" value="" id="position-genetive" name="position-genetive" required="")
+        .form__field
+          label.form__label
+            | Основание полномочий
+      .form__bottom
+        .form__bottom-item
+          .checkbox-field
+            input.input__checkbox(type="checkbox" id="successDataFlag" name="agreed" value="true" required="")
+            label(for="successDataFlag" class="checkbox-field__label")
+              .checkbox-field__check
+                svg(class='svg-icon')
+                  use(xlink:href='#icon-checkbox-check')
+            a(href="https://www.onetwotrip.com/ru/l10n/ru/d/agreement.pdf" target="_blank" class="checkbox-field__link")
+              | Даю согласие на обработку персональных данных
+
+        .form__bottom-item._button
+          button.js-show-extra(type="button" class="button")
+            | Продолжить

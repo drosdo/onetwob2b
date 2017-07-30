@@ -13,7 +13,8 @@ module.exports = function () {
   if (forms) {
     Array.prototype.forEach.call(forms, form => {
       let options = {
-        wrap: form
+        wrap: form,
+        data: form.getAttribute('data')
       };
       new Form(options);
     })

@@ -10,6 +10,8 @@ else clickEvent = 'click';
 module.exports = class {
   constructor(options) {
     this.wrap = options.wrap;
+    this.isRegistration = options.data === 'registration';
+
     this.form = this.wrap.querySelector('form');
     this.fields = this.wrap.querySelectorAll('.js-form-field');
     this.errors = this.form.querySelector('.js-form-errors');
@@ -34,12 +36,11 @@ module.exports = class {
   }
 
   bindInputEvents(field) {
-    let input = field.querySelector('input');
+    let input = field.querySelector('input') || field.querySelector('select') ;
     let placeholderValue = input.placeholder;
     input.dataset.placeholderValue = placeholderValue;
 
     input.addEventListener('blur', e => {
-      console.log('blur');
       input.placeholder = input.dataset.placeholderValue;
       if (input.value.length > 0) {
         field.classList.add('_placeholder-on');
@@ -49,7 +50,6 @@ module.exports = class {
     });
 
     input.addEventListener('focus', e => {
-      console.log('focus');
       input.placeholder = '';
       field.classList.add('_placeholder-on');
     });

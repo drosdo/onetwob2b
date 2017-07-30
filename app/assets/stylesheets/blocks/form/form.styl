@@ -5,7 +5,15 @@
     margin 0 auto
     +mediaMax($small)
       width 90%
-
+  &__cols
+    display flex
+  &__col
+    box-sizing border-box
+    ._2cols &
+      width 50%
+      &:first-child
+        padding-right 10px
+    display block
   &__field
     position relative
 
@@ -23,7 +31,9 @@
       margin 1rem 0 1.7rem
       letter-spacing .02rem
       line-height 2.8rem
-
+  &__label-small
+    font-size 12px
+    font-weight 200
   &__placeholder
     color #9E9E9E
     font-size 16px
