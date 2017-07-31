@@ -137,9 +137,17 @@
               label.form__placeholder(for="position-genetive")
                 | Должность
               input.input__text(type="text" autocomplete="off" value="" id="position-genetive" name="position-genetive" required="")
-        .form__field
+        .form__field.js-form-field
           label.form__label
             | Основание полномочий
+          .form__field-inline
+             input.input__radio(type="radio" name="basis" id="charter")
+             label.form__label(for="charter")
+                | Устав
+             input.input__radio(type="radio" name="basis" id="proxy")
+             label.form__label(for="proxy")
+                | Доверенность
+
       .form__bottom
         .form__bottom-item
           .checkbox-field
