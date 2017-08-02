@@ -6,6 +6,8 @@ let clickEvent;
 if (window.navigator.pointerEnabled) clickEvent = 'pointerup';
 else if ('ontouchend' in document.documentElement) clickEvent = 'touchend';
 else clickEvent = 'click';
+import registrationExtraTmpl from '_templates/form/registration-extra.pug';
+import registrationBasisFieldTmpl from '_templates/form/registration-basis-field.pug';
 
 module.exports = class {
   constructor(options) {
@@ -18,6 +20,24 @@ module.exports = class {
     this.hideErrors();
     this.placeholders();
     this.bindFormEvents();
+    if (this.isRegistration) {
+      this.renderRegistrationForm();
+    }
+  }
+
+  renderRegistrationForm() {
+    this.registrationExtraContainer = this.wrap.querySelector('.js-form-registration-extra');
+    this.renderRegistrationExtra();
+  }
+
+  renderRegistrationExtra() {
+    this.registrationExtraContainer.innerHTML = registrationExtraTmpl();
+    this.registrationBasisFieldContainer = this.wrap.querySelector('.js-form-fieldset-radio-content');
+    this.renderRegistrationBasisField();
+  }
+
+  renderRegistrationBasisField() {
+    this.registrationBasisFieldContainer.innerHTML = registrationBasisFieldTmpl({ name: 'eeeeee' });
   }
 
   bindFormEvents() {
@@ -36,7 +56,7 @@ module.exports = class {
   }
 
   bindInputEvents(field) {
-    let input = field.querySelector('input') || field.querySelector('select') ;
+    let input = field.querySelector('input') || field.querySelector('select');
     let placeholderValue = input.placeholder;
     input.dataset.placeholderValue = placeholderValue;
 
@@ -94,12 +114,12 @@ module.exports = class {
           input.parentNode.classList.remove('_wrong');
         }
       }
-      if(!isValid && !firstInvalid){
+      if (!isValid && !firstInvalid) {
         firstInvalid = input;
       }
     });
 
-    if(firstInvalid){
+    if (firstInvalid) {
       smoothScroll(firstInvalid);
     }
     return isValid;
@@ -158,7 +178,7 @@ module.exports = class {
      params[agreed]:true
      */
 
-    if(this.form.id === 'loginForm'){
+    if (this.form.id === 'loginForm') {
       this.hideErrors();
       document.body.classList.add('_loading');
       fetch('/api/auth/login', {method: "POST", body: {login: data.login, password: data.password}})
@@ -179,5 +199,5 @@ module.exports = class {
         })
     }
   }
-  
+
 };

@@ -17,10 +17,10 @@
   &__field
     position relative
   &__field-inline
-    input
-    label
-      display inline-block
-      margin-right 10px
+    position relative
+    display inline-block
+    margin-right 10px
+
   &__label
     position relative
     display block
@@ -38,6 +38,44 @@
   &__label-small
     font-size 12px
     font-weight 200
+
+  &__radio-input
+    position absolute
+    left 0
+    top 0
+    opacity 0
+    & ~ label
+      position relative
+      padding-left 35px
+      &:before
+        content ''
+        display block
+        width 24px
+        height 24px
+        border-radius 50%
+        position absolute
+        left 0
+        top 0
+        background-color #e0e0e0
+      &:after
+        content ''
+        display none
+    &:checked ~ label
+      position relative
+      padding-left 35px
+      &:before
+        background-color #ffc901
+      &:after
+        content ''
+        display block
+        width 8px
+        height 8px
+        border-radius 50%
+        background-color #424242
+        position absolute
+        left 8px
+        top 8px
+
   &__placeholder
     color #9E9E9E
     font-size 16px
