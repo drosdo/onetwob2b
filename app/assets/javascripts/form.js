@@ -13,31 +13,43 @@ module.exports = class {
   constructor(options) {
     this.wrap = options.wrap;
     this.isRegistration = options.data === 'registration';
-
     this.form = this.wrap.querySelector('form');
+    if (this.isRegistration) {
+      this.registrationExtraContainer = this.wrap.querySelector('.js-form-registration-extra');
+    }
     this.fields = this.wrap.querySelectorAll('.js-form-field');
     this.errors = this.form.querySelector('.js-form-errors');
     this.hideErrors();
     this.placeholders();
     this.bindFormEvents();
-    if (this.isRegistration) {
-      this.renderRegistrationForm();
-    }
-  }
-
-  renderRegistrationForm() {
-    this.registrationExtraContainer = this.wrap.querySelector('.js-form-registration-extra');
-    this.renderRegistrationExtra();
   }
 
   renderRegistrationExtra() {
     this.registrationExtraContainer.innerHTML = registrationExtraTmpl();
-    this.registrationBasisFieldContainer = this.wrap.querySelector('.js-form-fieldset-radio-content');
+    this.registrationBasisFieldContainer = this.registrationExtraContainer.querySelector('.js-form-fieldset-radio');
+    this.registrationBasisFieldContent = this.registrationExtraContainer.querySelector('.js-form-fieldset-radio-content');
+    this.registrationBasisData = {
+      proxy: {
+        name: 'proxy',
+        labelName: 'Данные о доверенности',
+        labelDate: 'Дата доверенности'
+      },
+      charter: {
+        name: 'charter',
+        labelName: 'Данные об уставе',
+        labelDate: 'Дата устава'
+      }
+    };
+    this.bindInputEvents(this.registrationExtraContainer);
+
     this.renderRegistrationBasisField();
+    this.bindRegistrationBasisEvents();
   }
 
   renderRegistrationBasisField() {
-    this.registrationBasisFieldContainer.innerHTML = registrationBasisFieldTmpl({ name: 'eeeeee' });
+    let selectedId = this.registrationBasisFieldContainer.querySelector('input[type="radio"]:checked').id;
+    this.registrationBasisFieldContent.innerHTML = registrationBasisFieldTmpl(this.registrationBasisData[selectedId]);
+    this.bindInputEvents(this.registrationBasisFieldContent);
   }
 
   bindFormEvents() {
@@ -46,38 +58,57 @@ module.exports = class {
       if (this.validateForm()) {
         this.formSubmit();
       }
-    })
+    });
+
+    if (this.isRegistration) {
+      let showExtraButton = this.wrap.querySelector('.js-show-extra');
+      showExtraButton.addEventListener('click', () => {
+        this.renderRegistrationExtra();
+      });
+    }
+  }
+
+  bindRegistrationBasisEvents() {
+    let radioFieldset = this.wrap.querySelector('.js-form-fieldset-radio-inputs');
+
+    radioFieldset.addEventListener('click', e => {
+      if (e.target.classList.contains('js-radio-input')) {
+        this.renderRegistrationBasisField();
+      }
+    });
   }
 
   placeholders() {
     Array.prototype.forEach.call(this.fields, field => {
       this.bindInputEvents(field);
-    })
+    });
   }
 
   bindInputEvents(field) {
-    let input = field.querySelector('input') || field.querySelector('select');
-    let placeholderValue = input.placeholder;
-    input.dataset.placeholderValue = placeholderValue;
+    let inputs = field.querySelectorAll('input') || field.querySelectorAll('select');
+    inputs.forEach((input) => {
+      let placeholderValue = input.placeholder;
+      input.dataset.placeholderValue = placeholderValue;
 
-    input.addEventListener('blur', e => {
-      input.placeholder = input.dataset.placeholderValue;
-      if (input.value.length > 0) {
-        field.classList.add('_placeholder-on');
-      } else {
-        field.classList.remove('_placeholder-on')
-      }
-    });
+      input.addEventListener('blur', e => {
+        input.placeholder = input.dataset.placeholderValue;
+        if (input.value.length > 0) {
+          input.parentNode.classList.add('_placeholder-on');
+        } else {
+          input.parentNode.classList.remove('_placeholder-on');
+        }
+      });
 
-    input.addEventListener('focus', e => {
-      input.placeholder = '';
-      field.classList.add('_placeholder-on');
-    });
+      input.addEventListener('focus', e => {
+        input.placeholder = '';
+        input.parentNode.classList.add('_placeholder-on');
+      });
 
-    input.addEventListener('input', e => {
-      input.parentNode.classList.remove('_invalid');
-      input.parentNode.classList.remove('_wrong');
-      field.classList.add('_placeholder-on');
+      input.addEventListener('input', e => {
+        input.parentNode.classList.remove('_invalid');
+        input.parentNode.classList.remove('_wrong');
+        input.parentNode.classList.add('_placeholder-on');
+      });
     });
   }
 

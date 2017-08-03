@@ -3,21 +3,21 @@
     | Неверный формат ввода
   label.form__placeholder(for="brand")
     | Наименование
-  input.input__text(type="text" autocomplete="off" value="" id="brand" name="brand" required="")
+  input.input__text(autocomplete="off" value="" id="brand" name="brand" required="")
 
 .form__field.js-form-field
   .form__message
     | Неверный формат ввода
-  label.form__placeholder(for="brand")
+  label.form__placeholder(for="kpp")
     | КПП
-  input.input__text(type="text" autocomplete="off" value="" id="kpp" name="kpp" required="")
+  input.input__text(autocomplete="off" value="" id="kpp" name="kpp" required="")
 
 .form__field.js-form-field
   .form__message
     | Неверный формат ввода
-  label.form__placeholder(for="brand")
+  label.form__placeholder(for="ogrn")
     | ОГРН
-  input.input__text(type="text" autocomplete="off" value="" id="ogrn" name="ogrn" required="")
+  input.input__text(autocomplete="off" value="" id="ogrn" name="ogrn" required="")
 
 .form__cols._2cols
   .form__col
@@ -30,7 +30,7 @@
         | Неверный формат ввода
       label.form__placeholder(for="family-nominative")
         | Фамилия
-      input.input__text(type="text" autocomplete="off" value="" id="family-nominative" name="family-nominative" required="")
+      input.input__text(autocomplete="off" value="" id="family-nominative" name="family-nominative" required="")
     .form__cols._2cols
       .form__col
         .form__field.js-form-field
@@ -38,20 +38,20 @@
             | Неверный формат ввода
           label.form__placeholder(for="name-nominative")
             | Имя
-          input.input__text(type="text" autocomplete="off" value="" id="name-nominative" name="name-nominative" required="")
+          input.input__text(autocomplete="off" value="" id="name-nominative" name="name-nominative" required="")
       .form__col
         .form__field.js-form-field
           .form__message
             | Неверный формат ввода
           label.form__placeholder(for="surname-nominative")
             | Отчество
-          input.input__text(type="text" autocomplete="off" value="" id="surname-nominative" name="surname-nominative" required="")
+          input.input__text(autocomplete="off" value="" id="surname-nominative" name="surname-nominative" required="")
     .form__field.js-form-field
       .form__message
         | Неверный формат ввода
       label.form__placeholder(for="position-nominative")
         | Должность
-      input.input__text(type="text" autocomplete="off" value="" id="position-nominative" name="position-nominative" required="")
+      input.input__text(autocomplete="off" value="" id="position-nominative" name="position-nominative" required="")
 
   .form__col
     label.form__label
@@ -63,7 +63,7 @@
         | Неверный формат ввода
       label.form__placeholder(for="family-genetive")
         | Фамилия
-      input.input__text(type="text" autocomplete="off" value="" id="family-genetive" name="family-genetive" required="")
+      input.input__text(autocomplete="off" value="" id="family-genetive" name="family-genetive" required="")
     .form__cols._2cols
       .form__col
         .form__field.js-form-field
@@ -71,30 +71,31 @@
             | Неверный формат ввода
           label.form__placeholder(for="name-genetive")
             | Имя
-          input.input__text(type="text" autocomplete="off" value="" id="name-genetive" name="name-genetive" required="")
+          input.input__text(autocomplete="off" value="" id="name-genetive" name="name-genetive" required="")
       .form__col
         .form__field.js-form-field
           .form__message
             | Неверный формат ввода
           label.form__placeholder(for="surname-genetive")
             | Отчество
-          input.input__text(type="text" autocomplete="off" value="" id="surname-genetive" name="surname-genetive" required="")
+          input.input__text(autocomplete="off" value="" id="surname-genetive" name="surname-genetive" required="")
     .form__field.js-form-field
       .form__message
         | Неверный формат ввода
       label.form__placeholder(for="position-genetive")
         | Должность
-      input.input__text(type="text" autocomplete="off" value="" id="position-genetive" name="position-genetive" required="")
+      input.input__text(autocomplete="off" value="" id="position-genetive" name="position-genetive" required="")
 .form__field.js-form-field.js-form-fieldset-radio
   label.form__label
     | Основание полномочий
-  .form__field-inline
-    input.form__radio-input(type="radio" name="basis" id="charter")
-    label.form__label.form__label-radio(for="charter")
-      | Устав
-  .form__field-inline
-    input.form__radio-input(type="radio" name="basis" id="proxy")
-    label.form__label.form__label-radio(for="proxy")
-      | Доверенность
+  .js-form-fieldset-radio-inputs
+    .form__field-inline
+      input.form__radio-input.js-radio-input(type="radio" name="basis-radios" id="charter")
+      label.form__label.form__label-radio(for="charter")
+        | Устав
+    .form__field-inline
+      input.form__radio-input.js-radio-input(type="radio" name="basis-radios" id="proxy" checked)
+      label.form__label.form__label-radio(for="proxy")
+        | Доверенность
   .js-form-fieldset-radio-content
 

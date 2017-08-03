@@ -1,6 +1,13 @@
 .form__field.js-form-field
   .form__message
     | Неверный формат ввода
-  label.form__placeholder(for="#{name}")
-    | Данные о #{name}
-  input.input__text(autocomplete="off" value="" id="#{name}" name="#{name}" required="")
+  label.form__placeholder(for="name-" + name)
+    | #{labelName}
+  input.input__text(autocomplete="off" value="" id="name-" + name name="name-" + name required="")
+
+.form__field.js-form-field
+  .form__message
+    | Неверный формат ввода
+  label.form__placeholder(for="date-" + name)
+    | #{labelDate}
+  input.input__text(autocomplete="off" value="" id="date-" + name name="date-" + name required="")
