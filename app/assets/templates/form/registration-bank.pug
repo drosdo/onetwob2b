@@ -1,0 +1,33 @@
+.form__field
+  label.form__label
+    | Банковские реквизиты
+.form__cols._2cols
+  .form__col
+    .form__field.js-form-field
+      .form__message
+        | Неверный формат ввода
+      label.form__placeholder(for="bank-name")
+        | Наименование банка
+      input.input__text(autocomplete="off" value="" id="bank-name" name="bank-name" required="")
+    .form__field.js-form-field
+      .form__message
+        | Неверный формат ввода
+      label.form__placeholder(for="bank-correspondence")
+        | Корреспондентский счет
+      input.input__text(autocomplete="off" value="" id="bank-correspondence" name="bank-correspondence" required="")
+  .form__col
+    .form__cols._2cols
+      .form__col
+        .form__field.js-form-field
+          .form__message
+            | Неверный формат ввода
+          label.form__placeholder(for="bank-bik")
+            | БИК
+          input.input__text(autocomplete="off" value="" id="bank-bik" name="bank-bik" required="")
+      .form__col
+        .form__field.js-form-field
+          .form__message
+            | Неверный формат ввода
+          label.form__placeholder(for="bank-raschetniy")
+            | Расчетный счет
+          input.input__text(autocomplete="off" value="" id="bank-raschetniy" name="bank-raschetniy" required="")

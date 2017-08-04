@@ -43,7 +43,7 @@ module.exports = class {
     this.bindInputEvents(this.registrationExtraContainer);
 
     this.renderRegistrationBasisField();
-    this.bindRegistrationBasisEvents();
+    this.bindRegistrationEvents();
   }
 
   renderRegistrationBasisField() {
@@ -68,13 +68,32 @@ module.exports = class {
     }
   }
 
-  bindRegistrationBasisEvents() {
-    let radioFieldset = this.wrap.querySelector('.js-form-fieldset-radio-inputs');
+  bindRegistrationEvents() {
+    const radioFieldset = this.wrap.querySelector('.js-form-fieldset-radio-inputs');
+    const adressCopyLink = this.wrap.querySelector('.js-copy-link');
 
     radioFieldset.addEventListener('click', e => {
       if (e.target.classList.contains('js-radio-input')) {
         this.renderRegistrationBasisField();
       }
+    });
+    adressCopyLink.addEventListener('click', e => {
+      this.registrationAdressCopyFields();
+    });
+  }
+
+  registrationAdressCopyFields() {
+    const adressLegal = this.wrap.querySelector('.js-adress-legal');
+    const adressPost = this.wrap.querySelector('.js-adress-post');
+    const adressLegalInputs = adressLegal.querySelectorAll('input');
+
+    adressLegalInputs.forEach((input) => {
+      let postInput = adressPost.querySelector(`#${input.id.replace(/legal/i, 'post')}`);
+      if (input.value) {
+        postInput.value = input.value;
+        postInput.dispatchEvent(new Event('change'));
+      }
+
     });
   }
 
@@ -100,6 +119,11 @@ module.exports = class {
       });
 
       input.addEventListener('focus', e => {
+        input.placeholder = '';
+        input.parentNode.classList.add('_placeholder-on');
+      });
+
+      input.addEventListener('change', e => {
         input.placeholder = '';
         input.parentNode.classList.add('_placeholder-on');
       });
