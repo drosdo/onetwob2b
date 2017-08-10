@@ -1,6 +1,6 @@
 .screen.form.js-form(data='registration')
   .wrap
-    form(name="contactForm" novalidate id="contactForm" class="ng-submitted")
+    form(name="contactForm" novalidate id="registration" class="ng-submitted")
       label.form__label
         | Как к вам обращаться?
       .form__field.js-form-field
@@ -16,7 +16,7 @@
       .form__field.js-form-field
         label.form__placeholder(for="phone")
           | Телефон для связи с вами
-        input.input__text(type="tel"  autocomplete="off" value="" id="phone" name="phone" required="")
+        input.input__text._numeric(type="tel"  autocomplete="off" value="" id="phone" name="phone" required="")
       .form__field.js-form-field
         .form__message
           | Неверный формат ввода
@@ -25,30 +25,28 @@
         input.input__text(type="email" autocomplete="off" value="" id="email" name="email" required="")
       label.form__label
         | Юридическая информация
-      .form__field.js-form-field
-        label.form__placeholder(for="contract")
-          | Тип договора
-        select.input__select#contract(name="contract" autocomplete="off")
-          option(hidden value='')
-            | Тип договора
-          option(value='0')
-            | Договор 1
-          option(value='1')
-            | Договор 2
-        //.input__select-dropdown.js-select-sropdown
-          input.js-trigger-checkbox"(type="checkbox")
+      .form__field.select-dropdown.js-select-dropdown
+          input.js-not-send.select-dropdown__checkbox.js-select-dropdown-checkbox(type="checkbox")
           .select-dropdown__toggle-box
-            |^
-          .select-dropdown__trigger
-          .default-value.js-select-dropdown__default-value
-            .select-dropdown__item
-          .select-dropdown__result
+            .select-dropdown__triangle
+          .js-form-field
+            label.form__placeholder(for="contract_type")
+              | Тип договора
+            input.input__text.js-select-dropdown-input(autocomplete="off" disabled value="" id="contract_type" name="contract_type" required="")
+
+
+          ul.select-dropdown__result
+            li.input__text.select-dropdown__item.js-select-dropdown-item._current
+              | Договор 1
+            li.input__text.select-dropdown__item.js-select-dropdown-item
+              | Договор 2
+
       .form__field.js-form-field
         .form__message
           | Неверный формат ввода
         label.form__placeholder(for="inn")
           | ИНН
-        input.input__text(type="text" autocomplete="off" value="" id="inn" name="inn" required="")
+        input.input__text(autocomplete="off" value="" id="inn" name="inn" required="")
       .form__extra.js-form-registration-extra
 
       .form__bottom
@@ -62,6 +60,9 @@
             a(href="https://www.onetwotrip.com/ru/l10n/ru/d/agreement.pdf" target="_blank" class="checkbox-field__link")
               | Даю согласие на обработку персональных данных
 
-        .form__bottom-item._button
-          button.js-show-extra.button(type="button")
+        .form__bottom-item._button.js-show-extra
+          button.button(type="button")
             | Продолжить
+        .form__bottom-item._button.g-hidden.js-submit-button
+          button.button
+            | Отправить

@@ -13,7 +13,7 @@ module.exports = class {
     this.menuEnabled = false;
     this.bindEvents();
   }
-  
+
   bindEvents() {
     this.toggleButton.addEventListener(clickEvent, e => {
       this.toggleMenu();
@@ -21,7 +21,7 @@ module.exports = class {
   }
 
   toggleMenu() {
-    if(this.menuEnabled){
+    if (this.menuEnabled) {
       this.globalWrap.classList.remove('_mobile-menu-open');
       this.menuEnabled = false;
     } else {
@@ -29,4 +29,4 @@ module.exports = class {
       this.menuEnabled = true;
     }
   }
-}
+};

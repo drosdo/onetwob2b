@@ -16,6 +16,8 @@ module.exports = class {
     this.form = this.wrap.querySelector('form');
     if (this.isRegistration) {
       this.registrationExtraContainer = this.wrap.querySelector('.js-form-registration-extra');
+      this.submitButton = this.wrap.querySelector('.js-submit-button');
+      this.extraButton = this.wrap.querySelector('.js-show-extra');
     }
     this.fields = this.wrap.querySelectorAll('.js-form-field');
     this.errors = this.form.querySelector('.js-form-errors');
@@ -26,20 +28,23 @@ module.exports = class {
 
   renderRegistrationExtra() {
     this.registrationExtraContainer.innerHTML = registrationExtraTmpl();
+    this.registrationExtraContainer.classList.add('_full');
+    this.extraButton.classList.add('g-hidden');
+    this.submitButton.classList.remove('g-hidden');
     this.registrationBasisFieldContainer = this.registrationExtraContainer.querySelector('.js-form-fieldset-radio');
     this.registrationBasisFieldContent = this.registrationExtraContainer.querySelector('.js-form-fieldset-radio-content');
-    this.registrationBasisData = {
-      proxy: {
+    this.registrationBasisData = [
+      {
         name: 'proxy',
         labelName: 'Данные о доверенности',
         labelDate: 'Дата доверенности'
       },
-      charter: {
+      {
         name: 'charter',
         labelName: 'Данные об уставе',
         labelDate: 'Дата устава'
       }
-    };
+    ];
     this.bindInputEvents(this.registrationExtraContainer);
 
     this.renderRegistrationBasisField();
@@ -48,8 +53,24 @@ module.exports = class {
 
   renderRegistrationBasisField() {
     let selectedId = this.registrationBasisFieldContainer.querySelector('input[type="radio"]:checked').id;
-    this.registrationBasisFieldContent.innerHTML = registrationBasisFieldTmpl(this.registrationBasisData[selectedId]);
+    this.registrationBasisData.map((item) => {
+      let container = this.wrap.querySelector(`.js-registration-basis-${item.name}`);
+      container.innerHTML = registrationBasisFieldTmpl(item);
+      if (selectedId === item.name) {
+        container.classList.remove('g-hidden');
+      }
+    });
     this.bindInputEvents(this.registrationBasisFieldContent);
+  }
+
+  toggleRegistrationBasisField(name) {
+    this.wrap.querySelectorAll('.js-registration-basis').forEach((item) => {
+      if (item.classList.contains(`js-registration-basis-${name}`)) {
+        item.classList.remove('g-hidden');
+      } else {
+        item.classList.add('g-hidden');
+      }
+    });
   }
 
   bindFormEvents() {
@@ -61,8 +82,7 @@ module.exports = class {
     });
 
     if (this.isRegistration) {
-      let showExtraButton = this.wrap.querySelector('.js-show-extra');
-      showExtraButton.addEventListener('click', () => {
+      this.extraButton.addEventListener('click', () => {
         this.renderRegistrationExtra();
       });
     }
@@ -74,7 +94,8 @@ module.exports = class {
 
     radioFieldset.addEventListener('click', e => {
       if (e.target.classList.contains('js-radio-input')) {
-        this.renderRegistrationBasisField();
+        console.log(e.target.id)
+        this.toggleRegistrationBasisField(e.target.id);
       }
     });
     adressCopyLink.addEventListener('click', e => {
@@ -93,7 +114,6 @@ module.exports = class {
         postInput.value = input.value;
         postInput.dispatchEvent(new Event('change'));
       }
-
     });
   }
 
@@ -124,6 +144,7 @@ module.exports = class {
       });
 
       input.addEventListener('change', e => {
+        console.log('change')
         input.placeholder = '';
         input.parentNode.classList.add('_placeholder-on');
       });
@@ -133,11 +154,33 @@ module.exports = class {
         input.parentNode.classList.remove('_wrong');
         input.parentNode.classList.add('_placeholder-on');
       });
+      input.addEventListener('keypress', e => {
+        if (input.classList.contains('_numeric')) {
+          this.validateInput(input);
+        }
+      });
     });
   }
 
-  isNotValidInput(input) {
-    return (!input.value || input.getAttribute('type') == "checkbox" && !input.checked);
+  validateInput(input) {
+    let isValid = 'good';
+    let isEmail = input.id === 'email' || input.classList.contains('js-input-email');
+    let isNumeric = input.classList.contains('_numeric');
+    if (this.isInputEmpty(input)) {
+      isValid = 'error';
+    } else {
+      if (isEmail && !this.isValidEmailInput(input)) {
+        isValid =  'wrong';
+      }
+      if (isNumeric && !this.isValidNumericInput(input)) {
+        isValid = 'wrong';
+      }
+    }
+    return isValid;
+  }
+
+  isInputEmpty(input) {
+    return (!input.value || input.getAttribute('type') === 'checkbox' && !input.checked);
   }
 
   isValidEmailInput(input) {
@@ -145,46 +188,49 @@ module.exports = class {
     return (filter.test(input.value));
   }
 
+  isValidNumericInput(input) {
+    return (!isNaN(input.value));
+  }
+  setInputState(input, state) {
+    let isError = state === 'error';
+    let isWrong = state === 'wrong';
+    if(isError) {
+      input.parentNode.classList.add('_invalid');
+      input.parentNode.classList.remove('_wrong');
+    }
+    if(isWrong) {
+      input.parentNode.classList.remove('_invalid');
+      input.parentNode.classList.add('_wrong');
+    }
+  }
+  /* валидация формы */
+
   validateForm() {
     let requiredInputs = this.wrap.querySelectorAll('input[required]');
-    let isValid = true;
+    let isValid = 'good';
     let firstInvalid = null;
 
     Array.prototype.forEach.call(requiredInputs, input => {
-      if (this.isNotValidInput(input)) {
-        input.parentNode.classList.add('_invalid');
-        input.parentNode.classList.remove('_wrong');
-        isValid = false;
-      } else {
-        if (input.id === 'email') {
-          if (this.isValidEmailInput(input)) {
-            input.parentNode.classList.remove('_invalid');
-            input.parentNode.classList.remove('_wrong');
-          } else {
-            input.parentNode.classList.add('_wrong');
-            isValid = false;
-          }
-        } else {
-          input.parentNode.classList.remove('_invalid');
-          input.parentNode.classList.remove('_wrong');
+      if (!input.closest('.g-hidden')) {
+        isValid = this.validateInput(input);
+        this.setInputState(input, isValid);
+        if (isValid !== 'good' && !firstInvalid) {
+          firstInvalid = input;
         }
-      }
-      if (!isValid && !firstInvalid) {
-        firstInvalid = input;
       }
     });
 
     if (firstInvalid) {
       smoothScroll(firstInvalid);
     }
-    return isValid;
+    return (isValid === 'good');
   }
 
   hideErrors() {
     if (this.errors) {
       Array.prototype.forEach.call(this.errors, error => {
         error.style.display = 'none';
-      })
+      });
     }
   }
 
@@ -196,6 +242,14 @@ module.exports = class {
       let element = elements[i];
       let name = element.name;
       let value = element.value;
+      let type = element.type;
+      let classList = element.classList;
+      let checked = element.checked;
+
+      if ((type === 'radio' && !checked) || classList.contains('js-not-send') || type === 'button' || name === '') {
+        continue;
+      }
+
       formData[name] = value;
     }
 
@@ -204,19 +258,18 @@ module.exports = class {
     if (this.form.id === 'contactForm') {
       document.body.classList.add('_loading');
 
-      fetch("https://b2b.onetwotrip.com/api/contract-requests", {
-        method: "POST",
+      fetch('https://b2b.onetwotrip.com/api/contract-requests', {
+        method: 'POST',
         body: data
+      }).then(response => {
+        response.json().then((data) => {
+          document.body.classList.remove('_loading');
+          document.body.classList.add('_message-open');
+          document.querySelector('.js-message-close').addEventListener(clickEvent, e => {
+            document.body.classList.remove('_message-open');
+          });
+        });
       })
-        .then(response => {
-          response.json().then((data) => {
-            document.body.classList.remove('_loading');
-            document.body.classList.add('_message-open');
-            document.querySelector('.js-message-close').addEventListener(clickEvent, e => {
-              document.body.classList.remove('_message-open');
-            });
-          })
-        })
         .catch(function (error) {
           document.body.classList.remove('_loading');
           document.body.classList.add('_message-error-open');
@@ -236,23 +289,34 @@ module.exports = class {
     if (this.form.id === 'loginForm') {
       this.hideErrors();
       document.body.classList.add('_loading');
-      fetch('/api/auth/login', {method: "POST", body: {login: data.login, password: data.password}})
-        .then(response => {
-          document.body.classList.remove('_loading');
-          if (response.status == 'error') {
-            this.errors.querySelector(`._${data.message}`).style.display = 'block';
-          } else {
-            window.location.replace("/account");
+      fetch(
+        '/api/auth/login', {
+          method: 'POST',
+          body: {
+            login: data.login,
+            password: data.password
           }
-        })
-        .catch(function (error) {
-          document.body.classList.remove('_loading');
-          document.body.classList.add('_message-error-open');
-          document.querySelector('.js-message-error-close').addEventListener(clickEvent, e => {
+        }
+      ).then(response => {
+        document.body.classList.remove('_loading');
+        if (response.status == 'error') {
+          this.errors.querySelector(`._${data.message}`).style.display = 'block';
+        } else {
+          window.location.replace('/account');
+        }
+      }).catch(function (error) {
+        document.body.classList.remove('_loading');
+        document.body.classList.add('_message-error-open');
+        document.querySelector('.js-message-error-close').addEventListener(
+          clickEvent, e => {
             document.body.classList.remove('_message-error-open');
-          });
-        })
+          }
+        );
+      });
+    }
+
+    if (this.form.id === 'registration') {
+      console.log(data);
     }
   }
-
 };
