@@ -1,38 +1,40 @@
 .form__field.js-form-field
-  .form__message
-    | Неверный формат ввода
   label.form__placeholder(for="brand")
     | Наименование
   input.input__text(autocomplete="off" value="" id="brand" name="brand" required="")
+  .js-form-message
+
 
 .form__field.js-form-field
-  .form__message
-    | Неверный формат ввода
   label.form__placeholder(for="kpp")
     | КПП
   input.input__text(autocomplete="off" value="" id="kpp" name="kpp" required="")
+  .js-form-message
+
 
 .form__field.js-form-field
-  .form__message
-    | Неверный формат ввода
   label.form__placeholder(for="ogrn")
     | ОГРН
   input.input__text(autocomplete="off" value="" id="ogrn" name="ogrn" required="")
+  .js-form-message
 
 include registration-signer
 
 .form__field.js-form-field.js-form-fieldset-radio
   label.form__label
     | Основание полномочий
+
   .js-form-fieldset-radio-inputs
     .form__field-inline
       input.form__radio-input.js-radio-input(type="radio" name="basis-radios" id="charter" value="basis-radios-charter")
       label.form__label.form__label-radio(for="charter")
         | Устав
+
     .form__field-inline
       input.form__radio-input.js-radio-input(type="radio" name="basis-radios" id="proxy" value="basis-radios-proxy" checked)
       label.form__label.form__label-radio(for="proxy")
         | Доверенность
+
   .js-form-fieldset-radio-content.form__fieldset-radio-content
     .js-registration-basis-charter.js-registration-basis.form__switched-field.g-hidden
     .js-registration-basis-proxy.js-registration-basis.form__switched-field

@@ -8,10 +8,15 @@ else if ('ontouchend' in document.documentElement) clickEvent = 'touchend';
 else clickEvent = 'click';
 import registrationExtraTmpl from '_templates/form/registration-extra.pug';
 import registrationBasisFieldTmpl from '_templates/form/registration-basis-field.pug';
+import formMessageTmpl from '_templates/form/form-message.pug';
 
 module.exports = class {
   constructor(options) {
     this.wrap = options.wrap;
+    this.messages = {
+      wrong: 'Неверный формат ввода',
+      empty: 'Заполните поле'
+    };
     this.isRegistration = options.data === 'registration';
     this.form = this.wrap.querySelector('form');
     if (this.isRegistration) {
@@ -22,10 +27,13 @@ module.exports = class {
     this.fields = this.wrap.querySelectorAll('.js-form-field');
     this.errors = this.form.querySelector('.js-form-errors');
     this.hideErrors();
-    this.placeholders();
+    this.initPlaceholders();
     this.bindFormEvents();
   }
-
+/*
+* форма регистрации подгружаемые поля
+*
+* */
   renderRegistrationExtra() {
     this.registrationExtraContainer.innerHTML = registrationExtraTmpl();
     this.registrationExtraContainer.classList.add('_full');
@@ -50,9 +58,13 @@ module.exports = class {
     this.renderRegistrationBasisField();
     this.bindRegistrationEvents();
   }
-
+  /*
+	* форма регистрации: основание полномочий
+	*
+	* */
   renderRegistrationBasisField() {
     let selectedId = this.registrationBasisFieldContainer.querySelector('input[type="radio"]:checked').id;
+
     this.registrationBasisData.map((item) => {
       let container = this.wrap.querySelector(`.js-registration-basis-${item.name}`);
       container.innerHTML = registrationBasisFieldTmpl(item);
@@ -72,6 +84,11 @@ module.exports = class {
       }
     });
   }
+
+  /*
+	* события
+	*
+	* */
 
   bindFormEvents() {
     this.form.addEventListener('submit', e => {
@@ -94,7 +111,6 @@ module.exports = class {
 
     radioFieldset.addEventListener('click', e => {
       if (e.target.classList.contains('js-radio-input')) {
-        console.log(e.target.id)
         this.toggleRegistrationBasisField(e.target.id);
       }
     });
@@ -117,7 +133,7 @@ module.exports = class {
     });
   }
 
-  placeholders() {
+  initPlaceholders() {
     Array.prototype.forEach.call(this.fields, field => {
       this.bindInputEvents(field);
     });
@@ -129,54 +145,89 @@ module.exports = class {
       let placeholderValue = input.placeholder;
       input.dataset.placeholderValue = placeholderValue;
 
-      input.addEventListener('blur', e => {
+      input.addEventListener('blur', () => {
         input.placeholder = input.dataset.placeholderValue;
         if (input.value.length > 0) {
           input.parentNode.classList.add('_placeholder-on');
+          if (input.id === 'email') {
+            this.validateInput(input, 'email');
+          }
         } else {
           input.parentNode.classList.remove('_placeholder-on');
         }
       });
 
-      input.addEventListener('focus', e => {
+      input.addEventListener('focus', () => {
+        input.placeholder = '';
+        input.parentNode.classList.add('_placeholder-on');
+        this.setInputState(input, 'clean');
+      });
+
+      input.addEventListener('change', () => {
         input.placeholder = '';
         input.parentNode.classList.add('_placeholder-on');
       });
 
-      input.addEventListener('change', e => {
-        console.log('change')
-        input.placeholder = '';
+      input.addEventListener('input', () => {
         input.parentNode.classList.add('_placeholder-on');
-      });
+        this.setInputState(input, 'clean');
 
-      input.addEventListener('input', e => {
-        input.parentNode.classList.remove('_invalid');
-        input.parentNode.classList.remove('_wrong');
-        input.parentNode.classList.add('_placeholder-on');
-      });
-      input.addEventListener('keypress', e => {
         if (input.classList.contains('_numeric')) {
-          this.validateInput(input);
+          this.validateInput(input, 'numeric');
         }
-      });
+      });/*
+      input.addEventListener('keypress', () => {
+
+      });*/
     });
   }
 
-  validateInput(input) {
-    let isValid = 'good';
-    let isEmail = input.id === 'email' || input.classList.contains('js-input-email');
-    let isNumeric = input.classList.contains('_numeric');
-    if (this.isInputEmpty(input)) {
-      isValid = 'error';
+  /* валидация формы */
+
+  validateForm() {
+    let requiredInputs = this.wrap.querySelectorAll('input[required]');
+    let isFormValid = true;
+    let firstInvalid = null;
+
+    Array.prototype.forEach.call(requiredInputs, input => {
+      let inputValidationResult;
+      if (!input.closest('.g-hidden')) {
+        inputValidationResult = this.validateInput(input);
+        if (inputValidationResult !== 'good') {
+          isFormValid = false;
+          if (!firstInvalid) {
+            firstInvalid = input;
+          }
+        }
+      }
+    });
+
+    if (firstInvalid) {
+      smoothScroll(firstInvalid);
+    }
+
+    return isFormValid;
+  }
+
+
+  validateInput(input, rule) {
+    let inputValidationResult = 'good';
+    let isCheckEmpty = rule ? rule === 'empty' : true;
+    let isEmail = rule ? rule === 'email' : input.id === 'email' || input.classList.contains('js-input-email');
+    let isNumeric = rule ? rule === 'numeric' : input.classList.contains('_numeric');
+
+    if (this.isInputEmpty(input) && isCheckEmpty) {
+      inputValidationResult = 'error';
     } else {
       if (isEmail && !this.isValidEmailInput(input)) {
-        isValid =  'wrong';
+        inputValidationResult = 'wrong';
       }
       if (isNumeric && !this.isValidNumericInput(input)) {
-        isValid = 'wrong';
+        inputValidationResult = 'wrong';
       }
     }
-    return isValid;
+    this.setInputState(input, inputValidationResult);
+    return inputValidationResult;
   }
 
   isInputEmpty(input) {
@@ -191,40 +242,47 @@ module.exports = class {
   isValidNumericInput(input) {
     return (!isNaN(input.value));
   }
+
   setInputState(input, state) {
     let isError = state === 'error';
     let isWrong = state === 'wrong';
-    if(isError) {
+    let isClean = state === 'clean';
+
+    if (isError) {
       input.parentNode.classList.add('_invalid');
       input.parentNode.classList.remove('_wrong');
+      // this.showInputMessage(input, this.messages.empty);
     }
-    if(isWrong) {
+
+    if (isWrong) {
       input.parentNode.classList.remove('_invalid');
       input.parentNode.classList.add('_wrong');
+      this.showInputMessage(input, this.messages.wrong);
+    }
+
+    if (isClean) {
+      input.parentNode.classList.remove('_invalid');
+      input.parentNode.classList.remove('_wrong');
+      this.deleteInputMessage(input);
     }
   }
-  /* валидация формы */
 
-  validateForm() {
-    let requiredInputs = this.wrap.querySelectorAll('input[required]');
-    let isValid = 'good';
-    let firstInvalid = null;
+  showInputMessage(input, message) {
+    let el = input.parentNode.querySelector('.js-form-message');
 
-    Array.prototype.forEach.call(requiredInputs, input => {
-      if (!input.closest('.g-hidden')) {
-        isValid = this.validateInput(input);
-        this.setInputState(input, isValid);
-        if (isValid !== 'good' && !firstInvalid) {
-          firstInvalid = input;
-        }
-      }
-    });
-
-    if (firstInvalid) {
-      smoothScroll(firstInvalid);
+    if (el) {
+      el.innerHTML = formMessageTmpl({ message });
     }
-    return (isValid === 'good');
   }
+
+  deleteInputMessage(input) {
+    let el = input.parentNode.querySelector('.js-form-message');
+
+    if (el) {
+      el.innerHTML = '';
+    }
+  }
+
 
   hideErrors() {
     if (this.errors) {
@@ -233,6 +291,10 @@ module.exports = class {
       });
     }
   }
+
+  /*
+	* SUBMIT
+	* */
 
   formSubmit() {
     let elements = this.form.elements;
@@ -253,7 +315,7 @@ module.exports = class {
       formData[name] = value;
     }
 
-    data = {params: formData};
+    data = { params: formData };
 
     if (this.form.id === 'contactForm') {
       document.body.classList.add('_loading');

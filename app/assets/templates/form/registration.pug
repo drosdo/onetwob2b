@@ -6,47 +6,52 @@
       .form__field.js-form-field
         label.form__placeholder(for="name")
           | Ваши Имя и Фамилия
-        input.input__text(type="text" required autocomplete="off" value="" id="name" name="name")
+        input.input__text(required autocomplete="off" value="" id="name" name="name")
+        .js-form-message
       .form__field.js-form-field
         label.form__placeholder(for="company")
           | Название вашей компании
-        input.input__text(type="text" autocomplete="off" value="" id="company" name="company")
+        input.input__text(autocomplete="off" value="" id="company" name="company")
+        .js-form-message
+
       label.form__label
         | Контактная информация
       .form__field.js-form-field
         label.form__placeholder(for="phone")
           | Телефон для связи с вами
         input.input__text._numeric(type="tel"  autocomplete="off" value="" id="phone" name="phone" required="")
+        .js-form-message
+
       .form__field.js-form-field
-        .form__message
-          | Неверный формат ввода
         label.form__placeholder(for="email")
           | Электронная почта
         input.input__text(type="email" autocomplete="off" value="" id="email" name="email" required="")
+        .js-form-message
+
       label.form__label
         | Юридическая информация
       .form__field.select-dropdown.js-select-dropdown
-          input.js-not-send.select-dropdown__checkbox.js-select-dropdown-checkbox(type="checkbox")
-          .select-dropdown__toggle-box
-            .select-dropdown__triangle
-          .js-form-field
-            label.form__placeholder(for="contract_type")
-              | Тип договора
-            input.input__text.js-select-dropdown-input(autocomplete="off" disabled value="" id="contract_type" name="contract_type" required="")
+        input.js-not-send.select-dropdown__checkbox.js-select-dropdown-checkbox(type="checkbox")
+        .select-dropdown__toggle-box
+          .select-dropdown__triangle
+        .js-form-field
+          label.form__placeholder(for="contract_type")
+            | Тип договора
+          input.input__text.js-select-dropdown-input(autocomplete="off" disabled value="" id="contract_type" name="contract_type" required="")
 
-
-          ul.select-dropdown__result
-            li.input__text.select-dropdown__item.js-select-dropdown-item._current
-              | Договор 1
-            li.input__text.select-dropdown__item.js-select-dropdown-item
-              | Договор 2
+        ul.select-dropdown__result
+          li.input__text.select-dropdown__item.js-select-dropdown-item._current
+            | Договор 1
+          li.input__text.select-dropdown__item.js-select-dropdown-item
+            | Договор 2
+        .js-form-message
 
       .form__field.js-form-field
-        .form__message
-          | Неверный формат ввода
         label.form__placeholder(for="inn")
           | ИНН
         input.input__text(autocomplete="off" value="" id="inn" name="inn" required="")
+        .js-form-message
+
       .form__extra.js-form-registration-extra
 
       .form__bottom
@@ -59,7 +64,7 @@
                   use(xlink:href='#icon-checkbox-check')
             a(href="https://www.onetwotrip.com/ru/l10n/ru/d/agreement.pdf" target="_blank" class="checkbox-field__link")
               | Даю согласие на обработку персональных данных
-
+          .js-form-message
         .form__bottom-item._button.js-show-extra
           button.button(type="button")
             | Продолжить

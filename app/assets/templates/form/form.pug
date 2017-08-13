@@ -3,26 +3,33 @@
     form(name="contactForm" novalidate id="contactForm" class="ng-submitted")
       label.form__label
         | Как к вам обращаться?
+
       .form__field.js-form-field
         label.form__placeholder(for="name")
           | Ваши Имя и Фамилия
-        input.input__text(type="text" required autocomplete="off" value="" id="name" name="name")
+        input.input__text(required autocomplete="off" value="" id="name" name="name")
+        .js-form-message
+
       .form__field.js-form-field
         label.form__placeholder(for="company")
           | Название вашей компании
-        input.input__text(type="text" autocomplete="off" value="" id="company" name="company")
+        input.input__text(autocomplete="off" value="" id="company" name="company")
+        .js-form-message
+
       label.form__label
         | Контактная информация
+
       .form__field.js-form-field
         label.form__placeholder(for="phone")
           | Телефон для связи с вами
         input.input__text(type="tel"  autocomplete="off" value="" id="phone" name="phone" required="")
+        .js-form-message
+
       .form__field.js-form-field
-        .form__message
-          | Неверный формат ввода
         label.form__placeholder(for="email")
           | Электронная почта
-        input.input__text(type="email" autocomplete="off" value="" id="email" name="email" required="")
+        input.input__text(autocomplete="off" value="" id="email" name="email" required="")
+        .js-form-message
 
       input.input__text(type="hidden" value="corp" name="contract_type" required="")
       .form__bottom
@@ -37,5 +44,5 @@
               | Даю согласие на обработку персональных данных
 
         .form__bottom-item._button
-          button(type="submit" class="button")
+          button(class="button")
             | Отправить
