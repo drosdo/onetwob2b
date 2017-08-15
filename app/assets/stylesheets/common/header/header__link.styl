@@ -28,6 +28,10 @@
     background hsla(0,0%,100%,.2)
     ._black &
       color #000
+  &._registration--desktop
+    display inline-block
+  &._registration--mobile
+    display none
 
   +mediaMax($small)
     text-align center
@@ -49,5 +53,7 @@
         color #000
       text-decoration none
       background transparent
-    &._registration
+    &._registration--desktop
       display none
+    &._registration--mobile
+      display block
