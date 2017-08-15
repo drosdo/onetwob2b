@@ -10,6 +10,7 @@
     padding 13rem 1.25rem
   +mediaMax($small)
     height 48.9rem
+
   &._first
     background-image url('~_images/teaser-first@x2.jpg')
     padding 257px 0 0
@@ -23,16 +24,19 @@
     +mediaMax($small)
       padding 22.2rem 1.25rem
       background-image url('~_images/teaser-agents-mobile@x2.jpg')
+
   &._groups
     background-image url('~_images/teaser-groups@x2.jpg')
     padding 257px 0 0
     +mediaMax($small)
       padding 22.2rem 1.25rem
       background-image url('~_images/teaser-groups@x2.jpg')
+
   &._registration
     padding 257px 0 0
+    height auto
     +mediaMax($small)
-      padding 22.2rem 1.25rem
+      padding 12.2rem 1.25rem 0
 
   &__blocks
     width 100%
@@ -60,11 +64,25 @@
     line-height 1.429em
     +mediaMax($small)
       font-size 1.4rem
+
+  &__registration-text
+    width 700px
+    margin 0 auto 30px
+    color #A0A0A0
+    font-size 14px
+    font-weight 400
+    letter-spacing .2px
+    line-height 1.429em
+    +mediaMax($small)
+      font-size 1.4rem
+      width 100%
   &__icon
     margin-bottom 20px
+
     svg
       width 40px
       height 47px
+
     +mediaMax($small)
       margin-bottom 2.5rem
       svg

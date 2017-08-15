@@ -1,8 +1,8 @@
 header.header.js-mobile-menu
   .header__logo.logo
     a(href='/onetwob2b/' target='_blank')
-        svg(class='svg-icon')
-          use(xlink:href='#icon-logo')
+      svg(class='svg-icon')
+        use(xlink:href='#icon-logo')
   .js-mobile-menu-toggle
     .header__mobile-menu-icon._open
       svg(class='svg-icon')
@@ -18,8 +18,10 @@ header.header.js-mobile-menu
         | Агентам
       a.header__link._active(href='/onetwob2b/groups.html')
         | Группы
+      a.header__link(href='/onetwob2b/registration.html')
+        | Регистрация
     .header__right
-      a.header__link(href='/onetwob2b/')
+      a.header__link._registration(href='/onetwob2b/registration.html')
         | Регистрация
       .header__login.js-dialog-trigger-open
         .header__mobile-login-icon
