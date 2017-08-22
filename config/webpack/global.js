@@ -78,8 +78,8 @@ module.exports = function(_path) {
           test: /\.js$/,
           use: {
             loader: 'babel-loader',
-            options: { presets: ['es2015']}
-            /*options: { presets: [['es2015', {
+            options: { presets: ['es2015'] }
+            /* options: { presets: [['es2015', {
               include: [/whatwg-.*!/]
             }]] }*/
           },
@@ -92,11 +92,12 @@ module.exports = function(_path) {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendors',
-        filename: 'assets/js/vendors.[hash].js'
+        filename: 'assets/js/vendors.[hash].js',
+        minChunks: Infinity,
       }),
       new webpack.ProvidePlugin({
         Promise: 'es6-promise',
-        fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+        fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
       }),
       new TextPlugin('assets/css/[name].[chunkhash].css'),
       new webpack.LoaderOptionsPlugin({
@@ -113,7 +114,7 @@ module.exports = function(_path) {
             'Android >= 4'
           ] })]
 
-        }
+        },
       }),
       new Manifest(path.join(_path + '/config', 'manifest.json'), {
         rootAssetPath: rootAssetPath,

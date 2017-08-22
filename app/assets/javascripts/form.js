@@ -76,7 +76,7 @@ module.exports = class {
   }
 
   toggleRegistrationBasisField(name) {
-    this.wrap.querySelectorAll('.js-registration-basis').forEach((item) => {
+    Array.prototype.forEach.call(this.wrap.querySelectorAll('.js-registration-basis'), (item) => {
       if (item.classList.contains(`js-registration-basis-${name}`)) {
         item.classList.remove('g-hidden');
       } else {
@@ -124,11 +124,12 @@ module.exports = class {
     const adressPost = this.wrap.querySelector('.js-adress-post');
     const adressLegalInputs = adressLegal.querySelectorAll('input');
 
-    adressLegalInputs.forEach((input) => {
+    Array.prototype.forEach.call(adressLegalInputs, (input) => {
       let postInput = adressPost.querySelector(`#${input.id.replace(/legal/i, 'post')}`);
       if (input.value) {
         postInput.value = input.value;
-        postInput.dispatchEvent(new Event('change'));
+        postInput.placeholder = '';
+        postInput.parentNode.classList.add('_placeholder-on');
       }
     });
   }
@@ -141,7 +142,7 @@ module.exports = class {
 
   bindInputEvents(field) {
     let inputs = field.querySelectorAll('input') || field.querySelectorAll('select');
-    inputs.forEach((input) => {
+    Array.prototype.forEach.call(inputs, (input) => {
       let placeholderValue = input.placeholder;
       input.dataset.placeholderValue = placeholderValue;
 
@@ -171,7 +172,6 @@ module.exports = class {
       input.addEventListener('input', () => {
         input.parentNode.classList.add('_placeholder-on');
         this.setInputState(input, 'clean');
-
         if (input.classList.contains('_numeric')) {
           this.validateInput(input, 'numeric');
         }

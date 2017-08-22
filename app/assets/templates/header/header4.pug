@@ -1,14 +1,14 @@
 header.header._black.js-mobile-menu
   .header__logo.logo
     a(href='/onetwob2b/' target='_blank')
-        svg(class='svg-icon')
-          use(xlink:href='#icon-logo-black')
+        svg(class='svg-icon' xmlns:xlink='http://www.w3.org/1999/xlink')
+          use(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href='#icon-logo-black')
   .js-mobile-menu-toggle
     .header__mobile-menu-icon._open
-      svg(class='svg-icon')
+      svg(class='svg-icon' xmlns:xlink='http://www.w3.org/1999/xlink')
         use(xlink:href='#icon-mobile-menu-open')
     .header__mobile-menu-icon._close
-      svg(class='svg-icon')
+      svg(class='svg-icon' xmlns:xlink='http://www.w3.org/1999/xlink')
         use(xlink:href='#icon-mobile-menu-close')
   nav.header__nav
     .header__left
@@ -25,6 +25,6 @@ header.header._black.js-mobile-menu
         | Регистрация
       .header__login.js-dialog-trigger-open
         .header__mobile-login-icon
-          svg(class='svg-icon')
+          svg(class='svg-icon' xmlns:xlink='http://www.w3.org/1999/xlink')
             use(xlink:href='#icon-mobile-menu-login')
         | Войти

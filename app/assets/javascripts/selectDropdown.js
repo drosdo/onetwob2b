@@ -19,7 +19,8 @@ module.exports = class {
       let el = e.target;
       if (el.closest('.js-select-dropdown-item')) {
         this.selectDropdownInput.value = el.innerText;
-        this.selectDropdownInput.dispatchEvent(new Event('change'));
+        this.selectDropdownInput.placeholder = '';
+        this.selectDropdownInput.parentNode.classList.add('_placeholder-on');
         this.close();
       }
       if (!el.closest('.js-select-dropdown')) {

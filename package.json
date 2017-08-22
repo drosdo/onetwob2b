@@ -60,6 +60,7 @@
   "author": "Mike Chernobrov <m.chernobrov@rambler-co.ru> (http://rambler-co.ru)",
   "license": "MIT",
   "dependencies": {
+    "element-closest": "^2.0.2",
     "es6-promise": "^4.1.0",
     "whatwg-fetch": "^2.0.3"
   }
