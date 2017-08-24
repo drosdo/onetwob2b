@@ -14,18 +14,23 @@ module.exports = class {
   }
 
   bindEvents() {
-    this.triggerOpen.addEventListener(clickEvent, e => {
-      this.toggleDialog(true);
-    });
-    this.triggerClose.addEventListener(clickEvent, e => {
-      this.toggleDialog();
+    document.body.addEventListener(clickEvent, e => {
+      let el = e.target;
+      if (el.correspondingUseElement) {
+        el = el.correspondingUseElement;
+      }
+      if (el.closest('.js-dialog-trigger-open')) {
+        this.toggleDialog(true);
+      }
+      if (el.closest('.js-dialog-trigger-close')) {
+        this.toggleDialog(false);
+      }
     });
   }
 
   toggleDialog(open) {
-    if(open){
+    if (open) {
       document.body.classList.add('_dialog-open');
-      
     } else {
       document.body.classList.remove('_dialog-open');
     }

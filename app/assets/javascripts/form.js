@@ -9,6 +9,7 @@ else clickEvent = 'click';
 import registrationExtraTmpl from '_templates/form/registration-extra.pug';
 import registrationBasisFieldTmpl from '_templates/form/registration-basis-field.pug';
 import formMessageTmpl from '_templates/form/form-message.pug';
+import formSuccessTmpl from '_templates/form/registration-success.pug';
 
 module.exports = class {
   constructor(options) {
@@ -366,11 +367,11 @@ module.exports = class {
         } else {
           window.location.replace('/account');
         }
-      }).catch(function (error) {
+      }).catch(function(error) {
         document.body.classList.remove('_loading');
         document.body.classList.add('_message-error-open');
         document.querySelector('.js-message-error-close').addEventListener(
-          clickEvent, e => {
+          clickEvent, () => {
             document.body.classList.remove('_message-error-open');
           }
         );
@@ -378,7 +379,15 @@ module.exports = class {
     }
 
     if (this.form.id === 'registration') {
-      console.log(data);
+      document.body.classList.add('_loading');
+      console.log(data)
+      window.setTimeout(() => this.showFormCompletePage(formData), 1000);
     }
+  }
+
+  showFormCompletePage(data) {
+    document.body.classList.remove('_loading');
+    this.wrap.innerHTML = formSuccessTmpl(data);
+    smoothScroll(0);
   }
 };

@@ -17,8 +17,12 @@
       margin-right 0
     ._2cols &
       width 50%
+      &._small-col
+        width 40%
+      &._big-col
+        width 60%
       +mediaMax($small)
-        width 100%
+        width 100% !important
         margin 0
     ._4cols &
       width 25%
@@ -101,9 +105,6 @@
     top 22px
     transition all .2s
     ._small &
-      left 0
-      width 100%
-      text-align center
       font-size 13px
 
     +mediaMax($small)
@@ -111,14 +112,17 @@
       letter-spacing .02rem
       left 1.2rem
       top 1.8rem
+
     ._placeholder-on &
       position absolute
       font-size 13px
       line-height 24px
       top 0
+
       +mediaMax($small)
         font-size 1.3rem
         line-height 2.4rem
+
   &__bottom
     margin-top 22px
     display flex
@@ -169,4 +173,13 @@
     &._full
       opacity 1
 
-
+  &__success
+    width 576px
+    text-align center
+    margin auto
+  &__text
+    color #fff
+    font-size 16px
+    font-weight 400
+    letter-spacing .2px
+    margin-bottom 20px

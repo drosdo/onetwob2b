@@ -15,8 +15,11 @@ module.exports = class {
   }
 
   bindEvents() {
-    document.addEventListener(clickEvent, e => {
+    document.body.addEventListener(clickEvent, e => {
       let el = e.target;
+      if (el.correspondingUseElement) {
+        el = el.correspondingUseElement;
+      }
       if (el.closest('.js-select-dropdown-item')) {
         this.selectDropdownInput.value = el.innerText;
         this.selectDropdownInput.placeholder = '';
