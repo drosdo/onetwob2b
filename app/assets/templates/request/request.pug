@@ -18,11 +18,10 @@
           | Телефон
         input.input__text(type="tel"  autocomplete="off" value="" id="phone" name="phone" required="")
       .form__field.js-form-field
-        .form__message
-          | Неверный формат ввода
         label.form__placeholder(for="email")
           | email
         input.input__text(type="email" autocomplete="off" value="" id="email" name="email" required="")
+        .js-form-message
 
       input.input__text(type="hidden" value="corp" name="contract_type" required="")
       .form__bottom
@@ -33,10 +32,10 @@
               .checkbox-field__check
                 svg(class='svg-icon' xmlns:xlink='http://www.w3.org/1999/xlink')
                   use(xlink:href='#icon-checkbox-check')
+              | Даю согласие на обработку&nbsp;
             a(href="https://www.onetwotrip.com/ru/l10n/ru/d/agreement.pdf" target="_blank" class="checkbox-field__link")
-              | Даю согласие на обработку персональных данных
-
-
+              | персональных данных
+          .js-form-message
         .form__bottom-item._button
           button(type="submit" class="button")
             | Отправить
