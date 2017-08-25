@@ -24,6 +24,7 @@ module.exports = class {
       this.registrationExtraContainer = this.wrap.querySelector('.js-form-registration-extra');
       this.submitButton = this.wrap.querySelector('.js-submit-button');
       this.extraButton = this.wrap.querySelector('.js-show-extra');
+      this.successWrap = document.querySelector('.js-success-wrap')
     }
     this.fields = this.wrap.querySelectorAll('.js-form-field');
     this.errors = this.form.querySelector('.js-form-errors');
@@ -75,6 +76,25 @@ module.exports = class {
     });
     this.bindInputEvents(this.registrationBasisFieldContent);
   }
+  /*
+	* форма регистрации: адреса юридичесикй и почтовый
+	*
+	* */
+  registrationAdressCopyFields() {
+    const adressLegal = this.wrap.querySelector('.js-adress-legal');
+    const adressPost = this.wrap.querySelector('.js-adress-post');
+    const adressLegalInputs = adressLegal.querySelectorAll('input');
+
+    Array.prototype.forEach.call(adressLegalInputs, (input) => {
+      let postInput = adressPost.querySelector(`#${input.id.replace(/legal/i, 'post')}`);
+      if (input.value) {
+        postInput.value = input.value;
+        postInput.placeholder = '';
+        postInput.parentNode.classList.add('_placeholder-on');
+      }
+    });
+  }
+
 
   toggleRegistrationBasisField(name) {
     Array.prototype.forEach.call(this.wrap.querySelectorAll('.js-registration-basis'), (item) => {
@@ -115,25 +135,11 @@ module.exports = class {
         this.toggleRegistrationBasisField(e.target.id);
       }
     });
-    adressCopyLink.addEventListener('click', e => {
+    adressCopyLink.addEventListener('click', () => {
       this.registrationAdressCopyFields();
     });
   }
 
-  registrationAdressCopyFields() {
-    const adressLegal = this.wrap.querySelector('.js-adress-legal');
-    const adressPost = this.wrap.querySelector('.js-adress-post');
-    const adressLegalInputs = adressLegal.querySelectorAll('input');
-
-    Array.prototype.forEach.call(adressLegalInputs, (input) => {
-      let postInput = adressPost.querySelector(`#${input.id.replace(/legal/i, 'post')}`);
-      if (input.value) {
-        postInput.value = input.value;
-        postInput.placeholder = '';
-        postInput.parentNode.classList.add('_placeholder-on');
-      }
-    });
-  }
 
   initPlaceholders() {
     Array.prototype.forEach.call(this.fields, field => {
@@ -176,10 +182,7 @@ module.exports = class {
         if (input.classList.contains('_numeric')) {
           this.validateInput(input, 'numeric');
         }
-      });/*
-      input.addEventListener('keypress', () => {
-
-      });*/
+      });
     });
   }
 
@@ -380,14 +383,17 @@ module.exports = class {
 
     if (this.form.id === 'registration') {
       document.body.classList.add('_loading');
-      console.log(data)
+      console.log(data);
+      /* setTimeout - просто чтобы успеть увидеть лоадер
+      * TODO реальная отправка данных на сервер*/
       window.setTimeout(() => this.showFormCompletePage(formData), 1000);
     }
   }
 
   showFormCompletePage(data) {
     document.body.classList.remove('_loading');
-    this.wrap.innerHTML = formSuccessTmpl(data);
+    this.successWrap.innerHTML = formSuccessTmpl(data);
+    this.wrap.style.display = 'none';
     smoothScroll(0);
   }
 };
